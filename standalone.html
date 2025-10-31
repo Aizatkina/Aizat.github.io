@@ -1,0 +1,1237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Studio Elio - Creative Design Agency</title>
+  <style>
+    /* Reset and Base Styles */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    @font-face {
+      font-family: 'Rubik';
+      src: url('https://fonts.gstatic.com/s/rubik/v31/iJWKBXyIfDnIV7nBrXw.woff2') format("woff2");
+      font-weight: 300 900;
+      font-style: normal;
+    }
+
+    body {
+      font-family: 'Rubik', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+      font-size: 16px;
+      line-height: 1.5;
+      color: #0e0e0e;
+      background-color: #f5f5f5;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    /* Skip Link */
+    .skip-link {
+      position: absolute;
+      top: -40px;
+      left: 6px;
+      z-index: 10000;
+      padding: 8px 16px;
+      background-color: #0e0e0e;
+      color: #f5f5f5;
+      text-decoration: none;
+      border-radius: 8px;
+      font-weight: 600;
+      font-size: 16px;
+    }
+
+    .skip-link:focus {
+      top: 6px;
+    }
+
+    /* Header */
+    .header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      z-index: 2000;
+    }
+
+    .header-content {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 12px 16px;
+      height: 86px;
+    }
+
+    .logo-button {
+      width: 56px;
+      height: 56px;
+      background-color: #e5e5e5;
+      border: none;
+      border-radius: 11px;
+      box-shadow: inset 0 0 0 2px #0e0e0e;
+      cursor: pointer;
+      padding: 0;
+      transition: background-color 0.2s;
+    }
+
+    .logo-button:hover {
+      background-color: #a3a3a3;
+    }
+
+    .button-inner {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 40px;
+      background-color: white;
+      border: 2px solid #0e0e0e;
+      border-radius: 10px;
+      transform: translateY(-4px);
+      padding: 12px 16px;
+    }
+
+    .button-icon {
+      width: 24px;
+      height: 24px;
+    }
+
+    .rotate {
+      transform: rotate(20deg);
+    }
+
+    .header-logo {
+      position: fixed;
+      left: 50%;
+      top: 274px;
+      transform: translateX(-50%);
+      z-index: 2000;
+      pointer-events: none;
+    }
+
+    .logo-main {
+      height: 326px;
+      object-fit: cover;
+    }
+
+    /* Hero Section */
+    .hero-section {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 1000px;
+      width: 100%;
+      overflow: hidden;
+      padding: 0 16px;
+    }
+
+    .hero-spacer {
+      flex: 1;
+      height: 1000px;
+      width: 100%;
+    }
+
+    .hero-footer {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 46px;
+      background-color: #0e0e0e;
+    }
+
+    .hero-icon-wrapper {
+      position: absolute;
+      top: -16px;
+      left: 0;
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      z-index: 1;
+      overflow: hidden;
+    }
+
+    .scroll-icon {
+      height: 36px;
+    }
+
+    /* What We Do Section */
+    .what-we-do-section {
+      position: relative;
+      background-color: #0e0e0e;
+      width: 100%;
+      z-index: 1000;
+      padding: 0 16px;
+      margin-top: -1px;
+    }
+
+    .section-header {
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+      padding: 48px 0;
+    }
+
+    .section-title-large {
+      font-size: 68px;
+      font-weight: 500;
+      color: #f5f5f5;
+      letter-spacing: -1.5px;
+      line-height: 1.1;
+    }
+
+    .section-description {
+      font-size: 16px;
+      color: #f5f5f5;
+      letter-spacing: 0.5px;
+      line-height: 1.3;
+    }
+
+    .project-grid {
+      display: flex;
+      flex-direction: column;
+      gap: 32px;
+      width: 100%;
+      padding-bottom: 160px;
+    }
+
+    .project-item {
+      position: relative;
+      height: 388px;
+      width: 100%;
+      background-color: #1a1a1a;
+      border-radius: 12px;
+      z-index: 1001;
+    }
+
+    .section-divider {
+      position: absolute;
+      bottom: -16px;
+      left: 0;
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      z-index: 1;
+      overflow: hidden;
+    }
+
+    .divider-icon {
+      height: 36px;
+    }
+
+    /* Our Work Section */
+    .our-work-section {
+      display: flex;
+      flex-direction: column;
+      gap: 32px;
+      width: 100%;
+      margin-top: 160px;
+    }
+
+    .section-title-wrapper {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      padding: 48px 16px;
+    }
+
+    .section-title-medium {
+      font-size: 52px;
+      font-weight: 500;
+      color: #0e0e0e;
+      letter-spacing: -0.5px;
+      line-height: 1.15;
+    }
+
+    .project-showcase {
+      width: 100%;
+    }
+
+    .project-link {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-decoration: none;
+      color: #0e0e0e;
+    }
+
+    .project-card {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+      width: 356px;
+      max-width: 100%;
+      margin: 0 auto;
+      overflow: hidden;
+    }
+
+    .project-video {
+      max-width: 356px;
+      max-height: 950px;
+      margin-top: 32px;
+      border: 2px solid #0e0e0e;
+      border-radius: 24px;
+    }
+
+    .project-details {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      max-width: 356px;
+      width: 100%;
+      padding-bottom: 32px;
+    }
+
+    .project-header {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .project-name {
+      font-size: 20px;
+      font-weight: 500;
+      line-height: 1.15;
+    }
+
+    .project-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 4px;
+      list-style: none;
+    }
+
+    .project-tags.desktop {
+      display: none;
+    }
+
+    .project-tags.mobile {
+      display: flex;
+    }
+
+    .tag {
+      font-size: 10.48px;
+      letter-spacing: 1.25px;
+      line-height: 1.15;
+      text-transform: uppercase;
+      padding: 4px 12px;
+      border: 1px solid #0e0e0e;
+      border-radius: 50px;
+    }
+
+    .project-description {
+      font-size: 16px;
+      letter-spacing: 0.5px;
+      line-height: 1.3;
+    }
+
+    .project-button {
+      width: 100%;
+      background-color: #e5e5e5;
+      border: none;
+      border-radius: 11px;
+      box-shadow: inset 0 0 0 2px #0e0e0e;
+      cursor: pointer;
+      padding: 0;
+      transition: background-color 0.2s;
+    }
+
+    .project-button:hover {
+      background-color: #a3a3a3;
+    }
+
+    .project-button .button-inner {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 4px;
+      height: 32px;
+      background-color: white;
+      border: 2px solid #0e0e0e;
+      border-radius: 10px;
+      transform: translateY(-4px);
+      padding: 12px 16px;
+      font-size: 14px;
+      font-weight: 500;
+      letter-spacing: 1.25px;
+      text-transform: uppercase;
+      color: #0e0e0e;
+    }
+
+    .project-button.mobile {
+      display: block;
+    }
+
+    .button-icon-small {
+      width: 24px;
+      height: 24px;
+    }
+
+    .project-placeholder {
+      position: relative;
+      height: 518px;
+      width: 100%;
+      margin: 0 9.375px;
+      background-color: #f0f0f0;
+      border-radius: 12px;
+    }
+
+    /* Studio Section */
+    .studio-section {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      gap: 32px;
+      background-color: #e5e5e5;
+      width: 100%;
+      z-index: 1000;
+      margin-top: 160px;
+      padding: 0 16px;
+    }
+
+    .studio-decoration-top,
+    .studio-decoration-bottom {
+      position: absolute;
+      left: 0;
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      z-index: 1;
+      overflow: hidden;
+    }
+
+    .studio-decoration-top {
+      top: -16px;
+    }
+
+    .studio-decoration-bottom {
+      bottom: -16px;
+    }
+
+    .decoration-icon {
+      height: 36px;
+    }
+
+    .studio-content {
+      display: flex;
+      flex-direction: column;
+      gap: 32px;
+      padding-top: 48px;
+    }
+
+    .studio-text {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      width: 100%;
+    }
+
+    .studio-description {
+      font-size: 16px;
+      letter-spacing: 0.5px;
+      line-height: 1.3;
+      padding-top: 16px;
+    }
+
+    .team-card-wrapper {
+      width: 100%;
+      padding: 48px 0 144px;
+    }
+
+    .team-card {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      max-width: 360px;
+      width: 100%;
+      background-color: #f5f5f5;
+      border: 2px solid #0e0e0e;
+      border-radius: 8px;
+      box-shadow: 0 14px 0 0 #0e0e0e;
+      padding: 24px 16px;
+      margin: 0 auto;
+    }
+
+    .dots {
+      width: 100%;
+    }
+
+    .team-member-info {
+      display: flex;
+      align-items: center;
+      height: 76px;
+      background-color: #0e0e0e;
+      border: 1px solid #0e0e0e;
+      border-radius: 3px;
+    }
+
+    .member-avatar {
+      height: 100%;
+      background-color: #f5f5f5;
+      border-radius: 3px 0 0 3px;
+    }
+
+    .avatar-image {
+      height: 100%;
+      object-fit: cover;
+      border-radius: 3px 0 0 3px;
+    }
+
+    .member-details {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      flex: 1;
+      padding: 0 16px;
+    }
+
+    .member-name {
+      font-size: 20px;
+      font-weight: 500;
+      color: #f5f5f5;
+      line-height: 1.15;
+    }
+
+    .member-role {
+      font-size: 12px;
+      color: #f5f5f5;
+      letter-spacing: 0.4px;
+      line-height: 1.3;
+    }
+
+    .member-counter {
+      font-size: 10.48px;
+      color: #e5e5e5;
+      letter-spacing: 1.25px;
+      line-height: 1.15;
+      text-transform: uppercase;
+      padding: 6.4px;
+      align-self: flex-start;
+    }
+
+    .team-member-bio {
+      background-color: #0e0e0e;
+      flex: 1;
+      min-height: 120px;
+      height: 400px;
+      padding: 24px 16px;
+      border-radius: 3px;
+    }
+
+    .bio-text {
+      font-size: 14px;
+      color: #f5f5f5;
+      letter-spacing: 0.25px;
+      line-height: 1.4;
+    }
+
+    .social-links {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 6px;
+      width: 100%;
+    }
+
+    .social-button {
+      width: 100%;
+      background-color: #e5e5e5;
+      border: none;
+      border-radius: 11px;
+      box-shadow: inset 0 0 0 2px #0e0e0e;
+      cursor: pointer;
+      padding: 0;
+      transition: background-color 0.2s;
+    }
+
+    .social-button:hover {
+      background-color: #a3a3a3;
+    }
+
+    .social-button .button-inner {
+      display: block;
+      max-height: 54px;
+      background-color: white;
+      border: 2px solid #0e0e0e;
+      border-radius: 10px;
+      transform: translateY(-4px);
+      padding: 12px 16px;
+    }
+
+    /* Footer */
+    .footer {
+      background-color: #f5f5f5;
+      padding: 80px 16px 0;
+    }
+
+    .footer-content {
+      margin: 0 auto;
+    }
+
+    .footer-main {
+      display: flex;
+      flex-direction: column;
+      gap: 48px;
+    }
+
+    .contact-section {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      flex: 1;
+      margin-bottom: 32px;
+    }
+
+    .contact-title {
+      font-size: 40px;
+      font-weight: 500;
+      line-height: 1.2;
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    .contact-subtitle {
+      font-size: 20px;
+      font-weight: 500;
+      color: #27272a;
+      line-height: 1.3;
+      text-align: center;
+      margin-bottom: 32px;
+    }
+
+    .contact-button {
+      background-color: #e5e5e5;
+      border: none;
+      border-radius: 11px;
+      box-shadow: inset 0 0 0 2px #0e0e0e;
+      cursor: pointer;
+      padding: 0;
+      transition: background-color 0.2s;
+    }
+
+    .contact-button:hover {
+      background-color: #a3a3a3;
+    }
+
+    .contact-button .button-inner {
+      display: block;
+      background-color: white;
+      border: 2px solid #0e0e0e;
+      border-radius: 10px;
+      transform: translateY(-4px);
+      padding: 12px 16px;
+      font-size: 14px;
+      font-weight: 500;
+      letter-spacing: 1.25px;
+      text-transform: uppercase;
+      color: #0e0e0e;
+    }
+
+    .social-section {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      flex-shrink: 0;
+    }
+
+    .footer-logo {
+      width: 97px;
+      margin: 0 0 32px;
+    }
+
+    .social-wrapper {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .social-title {
+      font-size: 14px;
+      font-weight: 500;
+      letter-spacing: 0.1px;
+      line-height: 1.15;
+      text-align: center;
+      margin-bottom: 16px;
+    }
+
+    .social-links-footer {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 13.5px;
+    }
+
+    .social-link {
+      font-size: 10.48px;
+      color: #525252;
+      letter-spacing: 1.25px;
+      line-height: 1.15;
+      text-transform: uppercase;
+      text-decoration: none;
+      background: linear-gradient(0deg, #0e0e0e, #0e0e0e) no-repeat right bottom;
+      background-size: 0 2px;
+      padding-bottom: 2px;
+      transition: all 0.3s;
+    }
+
+    .social-link:hover {
+      color: #0e0e0e;
+      background-size: 100% 2px;
+    }
+
+    .copyright {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 16px;
+      margin: 32px 0;
+      padding-top: 32px;
+    }
+
+    .copyright-text {
+      font-size: 10.48px;
+      color: #52525b;
+      letter-spacing: 1.25px;
+      line-height: 1.3;
+      text-transform: uppercase;
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 32px;
+    }
+
+    .footer-link {
+      font-size: 10.48px;
+      color: #52525b;
+      letter-spacing: 1.25px;
+      line-height: 1.15;
+      text-transform: uppercase;
+      text-decoration: none;
+      transition: color 0.3s;
+    }
+
+    .footer-link:hover {
+      color: #0e0e0e;
+    }
+
+    /* Desktop Styles */
+    @media (min-width: 768px) {
+      body {
+        font-size: 18px;
+      }
+
+      .header-content {
+        padding: 13.5px 36px;
+      }
+
+      .logo-button {
+        width: 63px;
+        height: 63px;
+      }
+
+      .button-inner {
+        height: 45px;
+        padding: 13.5px 18px;
+      }
+
+      .header-logo {
+        top: 262px;
+      }
+
+      .logo-main {
+        height: 313px;
+      }
+
+      .hero-spacer {
+        flex-basis: 461px;
+        height: 461px;
+      }
+
+      .hero-icon-wrapper {
+        top: -18px;
+      }
+
+      .what-we-do-section {
+        padding: 0 36px;
+      }
+
+      .section-header {
+        display: grid;
+        grid-template-columns: repeat(10, 1fr);
+        align-items: end;
+        gap: 18px;
+        padding: 90px 0 54px;
+      }
+
+      .section-title-large {
+        font-size: 135px;
+        letter-spacing: -2.25px;
+        line-height: 1;
+        grid-column: 1 / span 7;
+      }
+
+      .section-description {
+        font-size: 18px;
+        letter-spacing: 0.5625px;
+        line-height: 1.3;
+        grid-column: 8 / span 3;
+        align-self: end;
+      }
+
+      .project-grid {
+        gap: 36px;
+        padding-bottom: 180px;
+      }
+
+      .project-item {
+        height: 380px;
+      }
+
+      .section-divider {
+        bottom: -18px;
+      }
+
+      .our-work-section {
+        gap: 36px;
+        margin-top: 180px;
+      }
+
+      .section-title-wrapper {
+        gap: 9px;
+        padding: 90px 36px;
+      }
+
+      .section-title-medium {
+        font-size: 135px;
+        letter-spacing: -2.25px;
+        line-height: 1;
+      }
+
+      .project-card {
+        width: 1216px;
+        gap: 27px;
+      }
+
+      .project-video {
+        max-width: 1216px;
+        margin-top: 54px;
+      }
+
+      .project-details {
+        max-width: 1216px;
+        gap: 18px;
+        padding-bottom: 108px;
+      }
+
+      .project-header {
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: baseline;
+        gap: 18px;
+      }
+
+      .project-name {
+        font-size: 22.5px;
+        min-width: 15%;
+      }
+
+      .project-tags.desktop {
+        display: flex;
+        gap: 18px;
+      }
+
+      .project-tags.mobile {
+        display: none;
+      }
+
+      .tag {
+        font-size: 14.08px;
+        letter-spacing: 1.40625px;
+        padding: 4.5px 13.5px;
+      }
+
+      .project-description {
+        font-size: 18px;
+        letter-spacing: 0.5625px;
+      }
+
+      .project-button.mobile {
+        display: none;
+      }
+
+      .project-placeholder {
+        height: 1014px;
+        margin: 0 32px;
+      }
+
+      .studio-section {
+        display: grid;
+        grid-template-columns: repeat(10, 1fr);
+        align-items: start;
+        gap: 18px;
+        margin-top: 180px;
+        padding: 0 36px;
+      }
+
+      .studio-decoration-top {
+        top: -18px;
+      }
+
+      .studio-decoration-bottom {
+        bottom: -18px;
+      }
+
+      .studio-content {
+        grid-column: 1 / span 10;
+        display: grid;
+        grid-template-columns: repeat(10, 1fr);
+        gap: 18px;
+        padding-top: 108px;
+      }
+
+      .studio-text {
+        grid-column: 1 / span 6;
+        gap: 9px;
+      }
+
+      .studio-description {
+        padding: 36px 108px 0 0;
+      }
+
+      .team-card-wrapper {
+        grid-column: 7 / span 4;
+        padding: 108px 0 162px;
+      }
+
+      .team-card {
+        width: 420px;
+        gap: 18px;
+        padding: 27px 18px;
+      }
+
+      .team-member-info {
+        height: 85.5px;
+      }
+
+      .team-member-bio {
+        padding: 27px 18px;
+      }
+
+      .bio-text {
+        font-size: 15.75px;
+        letter-spacing: 0.28125px;
+        line-height: 1.4;
+      }
+
+      .footer {
+        padding: 108px 36px 0;
+      }
+
+      .footer-main {
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: start;
+        gap: 72px;
+      }
+
+      .contact-section {
+        align-items: flex-start;
+        text-align: left;
+        margin-bottom: 0;
+      }
+
+      .contact-title {
+        font-size: 76.5px;
+        letter-spacing: -1.6875px;
+        line-height: 1.1;
+        text-align: left;
+        margin-bottom: 36px;
+      }
+
+      .contact-subtitle {
+        font-size: 22.5px;
+        line-height: 1.3;
+        text-align: left;
+        margin-bottom: 36px;
+      }
+
+      .social-section {
+        align-items: flex-end;
+      }
+
+      .footer-logo {
+        margin: 45px 0 72px;
+      }
+
+      .social-title {
+        font-size: 15.75px;
+        letter-spacing: 0.1125px;
+        text-align: right;
+        margin-bottom: 27px;
+      }
+
+      .social-links-footer {
+        align-items: flex-end;
+      }
+
+      .social-link {
+        font-size: 14.08px;
+        letter-spacing: 1.40625px;
+      }
+
+      .copyright {
+        flex-direction: row;
+        justify-content: space-between;
+        gap: 18px;
+        margin: 72px 0 36px;
+        padding-top: 36px;
+      }
+
+      .copyright-text {
+        font-size: 14.08px;
+        letter-spacing: 1.40625px;
+        line-height: 1.3;
+      }
+
+      .footer-links {
+        gap: 36px;
+      }
+
+      .footer-link {
+        font-size: 14.08px;
+        letter-spacing: 1.40625px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Skip Link -->
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+
+  <!-- Header -->
+  <header class="header">
+    <div class="header-content">
+      <button aria-label="Open navigation menu" class="logo-button">
+        <span class="button-inner">
+          <img src="https://c.animaapp.com/mhb5xwsgseLMYj/assets/icon-1.svg" alt="Menu Icon" class="button-icon">
+        </span>
+      </button>
+      <button aria-label="Open contact form" class="logo-button">
+        <span class="button-inner">
+          <img src="https://c.animaapp.com/mhb5xwsgseLMYj/assets/icon-2.svg" alt="Contact Icon" class="button-icon rotate">
+        </span>
+      </button>
+    </div>
+    <a href="/" class="header-logo">
+      <img src="https://c.animaapp.com/mhb5xwsgseLMYj/assets/elio-logo.BKXDw9i6.svg" alt="Elio Logo" class="logo-main">
+    </a>
+  </header>
+
+  <!-- Main Content -->
+  <main id="main-content" class="main">
+    <!-- Hero Section -->
+    <section class="hero-section">
+      <div class="hero-spacer"></div>
+      <div class="hero-footer">
+        <div class="hero-icon-wrapper">
+          <img src="https://c.animaapp.com/mhb5xwsgseLMYj/assets/icon-5.svg" alt="Scroll Icon" class="scroll-icon">
+        </div>
+      </div>
+    </section>
+
+    <!-- What We Do Section -->
+    <section class="what-we-do-section">
+      <div class="section-header">
+        <h1 class="section-title-large">What we do</h1>
+        <p class="section-description">
+          We help creators, startups, and scale-ups build brands, websites, and
+          platforms made for growth. From strategy to design to development, our
+          work is tailored to teams ready to move fast and make an impact.
+        </p>
+      </div>
+      <div class="project-grid">
+        <div class="project-item"></div>
+        <div class="project-item"></div>
+        <div class="project-item"></div>
+        <div class="project-item"></div>
+      </div>
+      <div class="section-divider">
+        <img src="https://c.animaapp.com/mhb5xwsgseLMYj/assets/icon-5.svg" alt="Divider Icon" class="divider-icon">
+      </div>
+    </section>
+
+    <!-- Our Work Section -->
+    <section class="our-work-section">
+      <div class="section-title-wrapper">
+        <h2 class="section-title-medium">Our Work</h2>
+      </div>
+      
+      <div class="project-showcase">
+        <a href="/pineconebakeshop" aria-label="View Pincone Bakeshop project details" class="project-link">
+          <div class="project-card">
+            <video 
+              src="/images/pinecone-demo-reel.mp4" 
+              autoplay 
+              muted 
+              loop 
+              playsinline 
+              class="project-video"
+              aria-label="Video preview showcasing Pincone Bakeshop project work and design"
+              role="img"
+              title="Pincone Bakeshop project showcase video">
+              Your browser does not support the video tag.
+            </video>
+            <div class="project-details">
+              <div class="project-header">
+                <h6 class="project-name">Pincone Bakeshop</h6>
+                <ul class="project-tags desktop">
+                  <li class="tag">Branding</li>
+                  <li class="tag">Identity</li>
+                  <li class="tag">Animation</li>
+                  <li class="tag">Custom Assets</li>
+                  <li class="tag">Web Development</li>
+                  <li class="tag">Food & Beverage</li>
+                </ul>
+                <ul class="project-tags mobile">
+                  <li class="tag">Branding</li>
+                  <li class="tag">Animation</li>
+                  <li class="tag">Web Development</li>
+                </ul>
+              </div>
+              <p class="project-description">
+                We helped Pinecone Bakeshop evolve from pop-up favorite to polished
+                neighborhood staple with a groovy brand identity, joyful visuals, and
+                a custom-built website designed to grow with them.
+              </p>
+              <button class="project-button mobile">
+                <span class="button-inner">
+                  Check it out
+                  <img src="https://c.animaapp.com/mhb5xwsgseLMYj/assets/icon-6.svg" alt="Arrow Icon" class="button-icon-small">
+                </span>
+              </button>
+            </div>
+          </div>
+        </a>
+        
+        <a href="/hyggeapps" aria-label="View Hygge Apps project details" class="project-link">
+          <div class="project-placeholder"></div>
+        </a>
+      </div>
+    </section>
+
+    <!-- Studio Section -->
+    <section class="studio-section">
+      <div class="studio-decoration-top">
+        <img src="https://c.animaapp.com/mhb5xwsgseLMYj/assets/icon-7.svg" alt="Decoration Icon" class="decoration-icon">
+      </div>
+      
+      <div class="studio-content">
+        <div class="studio-text">
+          <h2 class="section-title-medium">Studio Elio</h2>
+          <p class="studio-description">
+            We're a team of designers, engineers, crafters, and tinkerers who love
+            bringing ambitious ideas to life. From brand to code, we obsess over the
+            details and build with care. Our work is thoughtful, collaborative, and
+            always tailored to help our clients grow.
+          </p>
+        </div>
+        
+        <div class="team-card-wrapper">
+          <div class="team-card">
+            <img src="https://c.animaapp.com/mhb5xwsgseLMYj/assets/dots.D-dsYnuM.svg" alt="Decoration" class="dots">
+            <div class="team-member-info">
+              <div class="member-avatar">
+                <img src="https://c.animaapp.com/mhb5xwsgseLMYj/assets/john-profile.B8EUl9Bq.png" alt="John Lee pixel art avatar" class="avatar-image">
+              </div>
+              <div class="member-details">
+                <h6 class="member-name">John Lee</h6>
+                <p class="member-role">Co-Founder</p>
+              </div>
+              <div class="member-counter" aria-label="Showing team member 1 of 2: John Lee">1/2</div>
+            </div>
+            <div class="team-member-bio">
+              <p class="bio-text">
+                John is a passionate designer and product expert with over a decade of
+                experience crafting intuitive websites, apps, and digital products.
+                He's worked at high-growth startups and understands the full product
+                lifecycle, from first sketch to shipped feature. John sweats the small
+                stuff and is focused on making things look and feel just right. He
+                holds a BA in Architecture from UC Berkeley and Master of Architecture
+                and MSRED degrees from Columbia University. He is based in sunny Los
+                Angeles.
+              </p>
+            </div>
+            <div class="social-links">
+              <button aria-label="Previous team member" class="social-button">
+                <span class="button-inner">
+                  <img src="https://c.animaapp.com/mhb5xwsgseLMYj/assets/icon-8.svg" alt="Previous Icon" class="button-icon-small">
+                </span>
+              </button>
+              <button aria-label="View John Lee's profile on LinkedIn" class="social-button">
+                <span class="button-inner">
+                  <img src="https://c.animaapp.com/mhb5xwsgseLMYj/assets/icon-9.svg" alt="LinkedIn Icon" class="button-icon-small">
+                </span>
+              </button>
+              <button aria-label="Like John Lee's profile" class="social-button">
+                <span class="button-inner">
+                  <img src="https://c.animaapp.com/mhb5xwsgseLMYj/assets/icon-10.svg" alt="Like Icon" class="button-icon-small">
+                </span>
+              </button>
+              <button aria-label="Next team member" class="social-button">
+                <span class="button-inner">
+                  <img src="https://c.animaapp.com/mhb5xwsgseLMYj/assets/icon-11.svg" alt="Next Icon" class="button-icon-small">
+                </span>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <div class="studio-decoration-bottom">
+        <img src="https://c.animaapp.com/mhb5xwsgseLMYj/assets/icon-7.svg" alt="Decoration Icon" class="decoration-icon">
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <div class="footer-content">
+        <div class="footer-main">
+          <div class="contact-section">
+            <h2 class="contact-title">Have a project<br>in mind?</h2>
+            <p class="contact-subtitle">We'd love to help bring your vision to life</p>
+            <button aria-label="Open contact form modal" class="contact-button">
+              <span class="button-inner">Contact us!</span>
+            </button>
+          </div>
+          
+          <div class="social-section">
+            <img src="https://c.animaapp.com/mhb5xwsgseLMYj/assets/elio-logo.BKXDw9i6.svg" alt="Elio Studio - Creative Design Agency" class="footer-logo">
+            <div class="social-wrapper">
+              <h3 class="social-title">Stay Connected</h3>
+              <div class="social-links-footer">
+                <a href="https://instagram.com/_studioelio" aria-label="Visit our Instagram page (opens in new tab)" class="social-link">INSTAGRAM</a>
+                <a href="https://linkedin.com/company/studioelio" aria-label="Visit our LinkedIn page (opens in new tab)" class="social-link">LINKEDIN</a>
+                <a href="mailto:hello@studioelio.com" class="social-link">HELLO@STUDIOELIO.COM</a>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <div class="copyright">
+          <p class="copyright-text">©2025 ELIO LLC. ALL RIGHTS RESERVED.</p>
+          <div class="footer-links">
+            <a href="/privacy" class="footer-link">PRIVACY</a>
+            <a href="/accessibility" class="footer-link">ACCESSIBILITY</a>
+          </div>
+        </div>
+      </div>
+    </footer>
+  </main>
+</body>
+</html>

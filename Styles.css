@@ -11,8 +11,9 @@
 html,body{height:100%}
 body{
   margin:0; background:var(--bg); color:var(--ink);
-  font-family:Rubik, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
-  line-height:1.25;
+  font-family: 'Rubik', system-ui, 'Bungee'
+  font-weight: 900;
+  color: #000;
 }
 a:focus-visible, button:focus-visible{ outline:3px solid #7c5cff; outline-offset:3px }
 .visually-hidden{ position:absolute !important; width:1px; height:1px; margin:-1px; overflow:hidden; clip:rect(0,0,0,0) }
@@ -44,25 +45,209 @@ a:focus-visible, button:focus-visible{ outline:3px solid #7c5cff; outline-offset
 .scallop{ position:relative; height:36px; width:100%; background:var(--bg); mask:radial-gradient(18px at 18px 18px,#000 98%,#0000 101%) left/36px 36px repeat-x }
 .scallop--hero{ position:absolute; bottom:0; left:0 }
 
-/* Hero */
-.hero{ min-height:100svh; position:relative; display:grid; place-items:center; text-align:center; padding:10vh 4vw 18vh }
-.hero__title{ font-size:clamp(28px,6vw,68px); font-weight:900; letter-spacing:.01em }
-.hero__title .blk{ display:inline-block }
-.playful{ border:0; background:transparent; padding:0 .2em; cursor:pointer }
-.playful__txt{ font-weight:900; letter-spacing:.08em; transition:transform .2s ease, text-shadow .2s ease }
-.playful:hover .playful__txt{
-  transform:translate(-2px,-2px);
-  text-shadow: 6px 6px 0 #ffd54a, 12px 12px 0 #6a5cff, 18px 18px 0 #7ef9a9, 24px 24px 0 #ff699c, 30px 30px 0 #111;
+/* =========================
+   HERO (desktop / default)
+   ========================= */
+.hero{
+  min-height:100svh;
+  position:relative;
+  display:flex;
+  flex-direction:column;
+  align-content: center;
+  align-items:flex-end;
+  text-align:right;
+  padding:8.75rem 4vw 18vh; /* top, sides, bottom */
+  background:#E9E9E9;
 }
-.tactile{ display:inline-flex; gap:.3rem; margin:0 .25em; vertical-align:middle }
-.key{ --cap:#fff; background:var(--cap); color:#111; border:2px solid var(--ink); border-radius:10px; padding:.18em .36em; font-weight:700; line-height:1; box-shadow:0 4px 0 var(--ink); cursor:pointer; transition:transform .08s, box-shadow .08s, background .2s }
-.key:active, .key.is-pressed{ transform:translateY(4px); box-shadow:0 0 0 var(--ink) }
-/* giant logo */
-.hero__logo{ position:absolute; left:50%; bottom:0; transform:translateX(-50%); pointer-events:none }
+
+
+/* Title */
+.hero__title{
+  font-family:'Rubik', sans-serif;
+  font-size:7.5rem;          /* 120px */
+  font-style:normal;
+  line-height:7.625rem;      /* 138px */
+  letter-spacing:0.02931rem;
+  color:#000;
+  text-align:right;
+  margin:0;
+}
+
+/* Button reset */
+.playful{
+  border:0;
+  background:transparent;
+  padding:0;
+  cursor:pointer;
+}
+
+/* Letter wrapper */
+.playful__wrap{
+  display:flex;
+  width:28.0625rem;          /* 449px */
+  height:10.25rem;           /* 180px */
+  padding:0 1.125rem;
+  flex-direction:row;
+  align-items:flex-start;
+  flex-shrink:0;
+}
+
+/* Single letters (PLAY) */
+.playful__letter{
+  color:#000;
+  text-align:center;
+  font-family:'Bungee', sans-serif;
+  font-size:9.375rem;        /* 150px */
+  font-style:normal;
+  font-weight:400;
+  line-height:10.25rem;      /* 180px */
+  letter-spacing:0.02931rem;
+  display:inline-block;
+  transition:transform .18s ease, text-shadow .18s ease;
+  will-change:transform, text-shadow;
+  --offset:.625rem;          /* 10px */
+  --shadow:#000;
+}
+.playful__letter:nth-child(1){ --shadow:#FFDC23; } /* P */
+.playful__letter:nth-child(2){ --shadow:#661FFF; } /* L */
+.playful__letter:nth-child(3){ --shadow:#F8376E; } /* A */
+.playful__letter:nth-child(4){ --shadow:#00FCAA; } /* Y */
+
+.playful:hover .playful__letter{
+  transform:translate(-.125rem,-.125rem);
+  text-shadow:var(--offset) var(--offset) 0 var(--shadow);
+}
+
+/* Tactile strip (desktop) */
+.tactile{
+  display:inline-flex;
+  gap:0;                      /* tightly packed */
+  vertical-align:middle;
+}
+
+/* Single key */
+.key{
+  display:flex;
+  padding:.57419rem 1.87569rem .55075rem 1.87425rem;
+  justify-content:center;
+  align-items:center;
+  align-self:stretch;
+  border-radius:1.17188rem;
+  border:.184rem solid #0E0E0E;
+  background:#FFF;
+  box-shadow:0 .5rem 0 #0E0E0E;    /* base ledge */
+  transform:translateY(-.25rem);   /* sit above base */
+  transition:transform .08s ease, box-shadow .08s ease, background .2s ease;
+
+  color:#0E0E0E;
+  text-align:center;
+  font-family:"Fira Code", ui-monospace, SFMono-Regular, Consolas, "Liberation Mono", Menlo, monospace;
+  font-size:3.6875rem;            /* ~59px */
+  font-style:normal;
+  font-weight:500;
+  line-height:4.39063rem;         /* 115% */
+
+  margin:0;
+  cursor:pointer;
+  background-clip:padding-box;
+}
+
+/* remove visual seam between rounded borders */
+.tactile .key + .key{ margin-left:-.184rem; }
+
+.key:active,
+.key.is-pressed{
+  transform:translateY(0);
+  box-shadow:0 0 0 #0E0E0E;
+}
+
+.key:focus-visible{
+  outline:.2rem solid #0E0E0E;
+  outline-offset:.15rem;
+}
+
+hero__logo{
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  /* keep it visible above the fold’s bottom edge */
+  bottom: max(8vh, 2rem); /* ~8% of viewport height or 2rem, whichever is larger */
+  z-index: 0;
+  pointer-events: none;
+}
+.hero__logo img{
+  width: clamp(10rem, 27vw, 32rem);
+  height: auto;
+  display: block;
+}
+/* =========================
+   PHONE BREAKPOINT
+   ========================= */
+@media (max-width: 48rem){           /* 768px and down */
+  .hero{
+    align-items:center;
+    text-align:center;
+    padding:2rem 1.25rem 8rem;
+  }
+
+  .hero__title{
+    text-align:center;
+    /* responsive scaling while preserving the big look on tablets */
+    font-size:clamp(2.2rem, 10vw, 4.25rem);
+    line-height:1.12;
+  }
+
+  .playful__wrap{
+    width:auto;
+    height:auto;
+    padding:0 .5rem;
+    justify-content:center;
+  }
+
+  .playful__letter{
+    /* scale letters per viewport */
+    font-size:clamp(3.5rem, 18vw, 7rem);
+    line-height:1em;              /* keep tight block height */
+  }
+
+  .tactile{
+    flex-wrap:wrap;
+    justify-content:center;
+    gap:.25rem;                   /* tiny breathing room on wrap */
+  }
+
+  .key{
+    /* scale to smaller screens using em so padding follows font-size */
+    font-size:clamp(1.5rem, 8.5vw, 2.75rem);
+    padding:.35em .5em .32em .5em;
+    border-radius:.9rem;
+    box-shadow:0 .35rem 0 #0E0E0E;
+    transform:translateY(-.2rem);
+  }
+
+  .tactile .key + .key{
+    margin-left:-.14rem;          /* keep joints clean at smaller size */
+  }
+}
+
+/* (optional) very-small phones */
+@media (max-width: 23.4375rem){      /* 375px */
+  .hero{ padding:1.5rem 1rem 6rem; }
+  .key{ font-size:clamp(1.35rem, 9.5vw, 2.25rem); }
+}
+
 
 /* Dock trigger */
 body.shrunk .hero__logo{ opacity:0 }
 body.shrunk .hdr{ transform:scale(1) }
+
+
+
+
+
+
+
+
 
 /* About (split) */
 .about{ position:relative; min-height:900px; display:grid; grid-template-columns:1.1fr .9fr; gap:5vw; align-items:center; padding:10vh 6vw 16vh; background:#e9e9e9; border-top:2px solid var(--ink) }

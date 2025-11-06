@@ -29,20 +29,38 @@ function onScroll(){
 document.addEventListener('scroll', onScroll, {passive:true});
 onScroll();
 
-/* Tactile keys: random color, reset on 5th */
-const keys = $$('.tactile .key');
-const countMap = new WeakMap();
-const palette = ['#ffd54a','#7ef9a9','#6a5cff','#ff699c','#4ad8ff','#ffb86b','#b4f5ff','#c9f','#f5ff7e','#9ef0d1'];
-const rand = ()=>palette[(Math.random()*palette.length)|0];
-keys.forEach(k=>{
-  countMap.set(k,0);
-  k.addEventListener('click', ()=>{
-    k.classList.add('is-pressed'); setTimeout(()=>k.classList.remove('is-pressed'),110);
-    const n = (countMap.get(k)||0)+1; countMap.set(k,n);
-    if (n % 5 === 0){ k.style.setProperty('--cap','#fff'); k.style.background='#fff'; }
-    else { const c = rand(); k.style.setProperty('--cap',c); k.style.background=c; }
+// Color palette per spec (includes white)
+const PALETTE = ['#FFDC23', '#661FFF', '#F8376E', '#00FCAA', '#FFFFFF'];
+
+// Utility: pick a color different from current background
+function nextColor(current) {
+  const choices = PALETTE.filter(c => c.toLowerCase() !== (current || '').toLowerCase());
+  return choices[Math.floor(Math.random() * choices.length)];
+}
+
+// Hook up all tactile keys
+document.querySelectorAll('.tactile .key').forEach(key => {
+  key.addEventListener('click', () => {
+    // Toggle pressed animation (class also set by :active for mouse)
+    key.classList.add('is-pressed');
+    setTimeout(() => key.classList.remove('is-pressed'), 110);
+
+    // Rotate background color
+    const computed = getComputedStyle(key).backgroundColor;
+    // Convert rgb(...) to hex for comparison (simple parse)
+    let currentHex = '';
+    if (computed.startsWith('rgb')) {
+      const [r, g, b] = computed.match(/\d+/g).map(Number);
+      currentHex = '#' + [r, g, b].map(v => v.toString(16).padStart(2, '0')).join('').toUpperCase();
+    } else {
+      currentHex = computed;
+    }
+    key.style.backgroundColor = nextColor(currentHex);
   });
 });
+
+/* --------------------------------------------------------- */
+
 
 /* About: typewriter on first reveal */
 const bioEl = $('#typedBio');

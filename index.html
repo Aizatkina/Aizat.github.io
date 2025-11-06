@@ -4,9 +4,15 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Aizat — Portfolio</title>
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;600;800;900&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="Styles.css"> 
+<!-- Load Rubik font properly -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Bungee&family=Rubik:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+<!-- Link your stylesheet -->
+<link rel="stylesheet" href="Styles.css">
+</head>
 
 <body>
 
@@ -17,10 +23,8 @@
   <header class="hdr" aria-label="Site">
     <a href="#top" class="hdr__brand" aria-label="Home">
       <!-- placeholder logo -->
-      <svg viewBox="0 0 200 64" class="hdr__logo" aria-hidden="true">
-        <rect width="200" height="64" rx="14" fill="#111"/>
-        <text x="100" y="42" text-anchor="middle" font-size="34" fill="#fff" font-weight="900" font-family="Rubik, system-ui">LOGO</text>
-      </svg>
+       <a href="/" class="hdr__link" aria-label="Home">
+        <img class="hdr__logo" src="logo.svg" alt="Site logo">
     </a>
   </header>
 
@@ -54,12 +58,19 @@
     <section id="top" class="hero" aria-labelledby="hero-title">
       <div class="hero__inner">
         <h1 id="hero-title" class="hero__title">
-          <span class="blk">Designing digital world</span><br />
+          <span class="blk">Designing digital</span><br />
           <span class="blk">with a sense of</span><br />
-          <button id="playfulBtn" class="playful" aria-label="Play the snake game">
-            <span class="playful__txt">PLAY</span>
-          </button>
-          <span>and</span>
+         <button id="playfulBtn" class="playful" aria-label="Play the snake game">
+          <span class="playful__wrap" aria-hidden="true">
+            <span class="playful__letter">P</span>
+            <span class="playful__letter">L</span>
+            <span class="playful__letter">A</span>
+            <span class="playful__letter">Y</span>
+          </span>
+        </button>
+
+
+          <span>and</span> <br />
           <span class="tactile" aria-label="tactile">
             <button class="key" aria-label="t">t</button>
             <button class="key" aria-label="a">a</button>
@@ -71,16 +82,18 @@
           </span><br />
         </h1>
 
-        <!-- giant logo that shrinks & docks -->
-        <div class="hero__logo" id="bigLogo" aria-hidden="true">
-          <svg viewBox="0 0 640 220" role="img" aria-label="Logo placeholder">
-            <rect x="0" y="170" width="640" height="50" rx="25" fill="#111"></rect>
-            <g transform="translate(40,10)">
-              <rect rx="40" width="560" height="180" fill="#111"></rect>
-              <text x="280" y="120" text-anchor="middle" font-family="Rubik" font-size="120" fill="#fff" font-weight="900" letter-spacing="2">LOGO</text>
-            </g>
-          </svg>
-        </div>
+   <header class="hdr" id="hdr">
+    <a href="/" class="hdr__link" aria-label="Home">
+    <img class="hdr__logo" src="logo.svg" alt="Site logo">
+  </a> </header>
+
+  <!-- Big hero logo (shown immediately on load) -->
+<div class="hero__logo" id="bigLogo" aria-hidden="true">
+  <img src="logo.svg" alt="" />
+</div>
+
+
+
 
         <!-- scalloped footer of hero (like Studio Elio) -->
         <div class="scallop scallop--hero" aria-hidden="true"></div>

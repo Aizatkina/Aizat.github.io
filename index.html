@@ -27,30 +27,28 @@
         <img class="hdr__logo" src="logo.svg" alt="Site logo">
     </a>
   </header>
+  
+<!-- Floating hand button → right drawer -->
+<button class="hand" id="drawerToggle" aria-controls="drawer" aria-expanded="false" aria-label="Open menu">
+  <span class="hand__inner">
+    <img src="Hand_icon.svg" alt="Open menu" class="hand__icon">
+  </span>
+</button>
 
-  <!-- Floating hand button → right drawer -->
-  <button class="hand" aria-controls="drawer" aria-expanded="false" aria-label="Open menu">
-    <span class="hand__inner">🤚</span>
-  </button>
 
-  <!-- Right drawer -->
-  <aside id="drawer" class="drawer" aria-hidden="true">
-    <button class="drawer__close" aria-label="Close">✕</button>
-    <div class="drawer__body">
-      <a class="drawer__home" href="#top" aria-label="Home">
-        <svg viewBox="0 0 200 64" width="96" height="32" aria-hidden="true">
-          <rect width="200" height="64" rx="14" fill="#111"/>
-          <text x="100" y="42" text-anchor="middle" font-size="34" fill="#fff" font-weight="900" font-family="Rubik, system-ui">LOGO</text>
-        </svg>
-      </a>
-      <nav class="drawer__nav" aria-label="Primary">
-        <a class="drawer__link" href="#about">About</a>
-        <a class="drawer__link" href="#work">Work</a>
-        <a class="drawer__link" href="#contact">Contact</a>
-        <a class="drawer__link" href="/diary.html">Diary ↗</a>
-      </nav>
-    </div>
-  </aside>
+<!-- Right drawer -->
+<aside id="drawer" class="drawer" aria-hidden="true">
+  <div class="drawer__body">
+    <nav class="drawer__nav" aria-label="Primary">
+      <a class="drawer__link" href="#about">About</a>
+      <a class="drawer__link" href="#work">My works</a>
+      <a class="drawer__link" href="/diary.html">Diary notes</a>
+      <a class="drawer__link" href="#contact">Contact</a>
+    </nav>
+  </div>
+</aside>
+
+
 
   <main id="main">
 
@@ -87,10 +85,11 @@
     <img class="hdr__logo" src="logo.svg" alt="Site logo">
   </a> </header>
 
-  <!-- Big hero logo (shown immediately on load) -->
-<div class="hero__logo" id="bigLogo" aria-hidden="true">
-  <img src="logo.svg" alt="" />
-</div>
+    <header class="hero__logo" id="hdr">
+    <a href="/" class="hdr__link" aria-label="Home">
+    <img class="hdr__logo" src="logo.svg" alt="Site logo">
+  </a> </header>
+
 
 
 
@@ -105,14 +104,14 @@
       <div class="about__left">
         <h2 class="about__title">The story of my life.</h2>
         <p class="about__txt">
-          I design and build playful, tactile digital experiences—with care for detail,
-          accessibility, and performance. I love prototyping odd ideas and shaping them
-          into friendly products.
+        I build little worlds inside the screen — places where play meets purpose. 
+        Every project is an experiment in how design can move, breathe, and connect.
         </p>
         <h4 class="about__email">
           <a href="mailto:Aizatkina1104@gmail.com">Aizatkina1104@gmail.com</a>
         </h4>
       </div>
+
 
       <div class="about__right">
         <div class="card">

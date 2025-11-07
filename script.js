@@ -2,21 +2,43 @@
 const $ = (s, c=document)=>c.querySelector(s);
 const $$ = (s, c=document)=>Array.from(c.querySelectorAll(s));
 
-/* Drawer */
-const hand = $('.hand');
-const drawer = $('#drawer');
-const closeBtn = $('.drawer__close');
-function toggleDrawer(open){
-  if (open === undefined) open = !drawer.classList.contains('open');
-  drawer.classList.toggle('open', open);
-  drawer.setAttribute('aria-hidden', String(!open));
-  hand.setAttribute('aria-expanded', String(open));
+// Drawer toggle
+const drawer      = document.getElementById('drawer');
+const toggleBtn   = document.getElementById('drawerToggle');
+const handInner   = toggleBtn.querySelector('.hand__inner');
+const handIcon    = toggleBtn.querySelector('.hand__icon');
+
+const HAND_SRC  = 'Hand_icon.svg';
+const CROSS_SRC = 'cross_icon.svg';
+
+function setDrawerState(isOpen){
+  drawer.classList.toggle('open', isOpen);
+  drawer.setAttribute('aria-hidden', String(!isOpen));
+  toggleBtn.setAttribute('aria-expanded', String(isOpen));
+  handIcon.src = isOpen ? CROSS_SRC : HAND_SRC;
+  handIcon.alt = isOpen ? 'Close menu' : 'Open menu';
 }
-hand.addEventListener('click', ()=>toggleDrawer());
-closeBtn.addEventListener('click', ()=>toggleDrawer(false));
-$$('.drawer__link').forEach(a=>a.addEventListener('click', e=>{
-  if ((a.getAttribute('href')||'').startsWith('#')) toggleDrawer(false);
-}));
+
+// click to toggle
+toggleBtn.addEventListener('click', () => {
+  const isOpen = !drawer.classList.contains('open');
+  setDrawerState(isOpen);
+});
+
+// optional: close on Escape
+document.addEventListener('keydown', (e) => {
+  if(e.key === 'Escape' && drawer.classList.contains('open')){
+    setDrawerState(false);
+  }
+});
+
+// optional: close when clicking outside drawer
+document.addEventListener('click', (e) => {
+  if(!drawer.classList.contains('open')) return;
+  const clickInsideDrawer = drawer.contains(e.target) || toggleBtn.contains(e.target);
+  if(!clickInsideDrawer) setDrawerState(false);
+});
+
 
 /* Header show when scrolled past ~45% viewport */
 const hdr = $('.hdr');
@@ -132,7 +154,7 @@ function hideGame(){ overlay.classList.remove('on'); overlay.setAttribute('aria-
 $('#playfulBtn').addEventListener('click', showGame);
 exitBtns.forEach(b=>b.addEventListener('click', hideGame));
 
-function start(){ reset(); window.addEventListener('keydown', onKey); loop=setInterval(step,100); }
+function start(){ reset(); window.addEventListener('keydown', onKey); loop=setInterval(step,180); }
 function stop(){ clearInterval(loop); window.removeEventListener('keydown', onKey); }
 function reset(){
   score=0; scoreVal.textContent='0'; dialog.classList.remove('show');
@@ -166,7 +188,7 @@ function draw(){
     if(i===0){ ctx.fillStyle='#111'; ctx.fillRect(x+grid/2,y+6,4,4); ctx.fillStyle='#2bdc76'; }});
 }
 function end(){ stop(); finalScore.textContent=String(score); dialog.classList.add('show'); }
-playAgain.addEventListener('click', ()=>{ reset(); loop=setInterval(step,100); window.addEventListener('keydown', onKey); });
+playAgain.addEventListener('click', ()=>{ reset(); loop=setInterval(step,180); window.addEventListener('keydown', onKey); });
 
 /* Keyboard open for PLAYFUL */
 $('#playfulBtn').addEventListener('keydown', e=>{

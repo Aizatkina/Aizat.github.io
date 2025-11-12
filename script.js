@@ -1,17 +1,21 @@
+// ==============================
 // Helpers
-const $ = (s, c=document)=>c.querySelector(s);
-const $$ = (s, c=document)=>Array.from(c.querySelectorAll(s));
+// ==============================
+const $  = (s, c = document) => c.querySelector(s);
+const $$ = (s, c = document) => Array.from(c.querySelectorAll(s));
 
-// Drawer toggle
-const drawer      = document.getElementById('drawer');
-const toggleBtn   = document.getElementById('drawerToggle');
-const handInner   = toggleBtn.querySelector('.hand__inner');
-const handIcon    = toggleBtn.querySelector('.hand__icon');
+// ==============================
+// Drawer toggle (safe guards)
+// ==============================
+const drawer    = $('#drawer');
+const toggleBtn = $('#drawerToggle');
+const handIcon  = toggleBtn ? toggleBtn.querySelector('.hand__icon') : null;
 
 const HAND_SRC  = 'Hand_icon.svg';
 const CROSS_SRC = 'cross_icon.svg';
 
-function setDrawerState(isOpen){
+function setDrawerState(isOpen) {
+  if (!drawer || !toggleBtn || !handIcon) return;
   drawer.classList.toggle('open', isOpen);
   drawer.setAttribute('aria-hidden', String(!isOpen));
   toggleBtn.setAttribute('aria-expanded', String(isOpen));
@@ -19,57 +23,56 @@ function setDrawerState(isOpen){
   handIcon.alt = isOpen ? 'Close menu' : 'Open menu';
 }
 
-// click to toggle
-toggleBtn.addEventListener('click', () => {
-  const isOpen = !drawer.classList.contains('open');
-  setDrawerState(isOpen);
-});
+if (toggleBtn) {
+  toggleBtn.addEventListener('click', () => {
+    const isOpen = !drawer.classList.contains('open');
+    setDrawerState(isOpen);
+  });
+}
 
-// optional: close on Escape
 document.addEventListener('keydown', (e) => {
-  if(e.key === 'Escape' && drawer.classList.contains('open')){
+  if (e.key === 'Escape' && drawer && drawer.classList.contains('open')) {
     setDrawerState(false);
   }
 });
 
-// optional: close when clicking outside drawer
+// Close drawer when clicking outside
 document.addEventListener('click', (e) => {
-  if(!drawer.classList.contains('open')) return;
-  const clickInsideDrawer = drawer.contains(e.target) || toggleBtn.contains(e.target);
-  if(!clickInsideDrawer) setDrawerState(false);
+  if (!drawer || !toggleBtn) return;
+  if (!drawer.classList.contains('open')) return;
+  const inside = drawer.contains(e.target) || toggleBtn.contains(e.target);
+  if (!inside) setDrawerState(false);
 });
 
-
-/* Header show when scrolled past ~45% viewport */
+// ==============================
+// Header "dock" when scrolled
+// ==============================
 const hdr = $('.hdr');
-function onScroll(){
-  const threshold = innerHeight * 0.45;
-  const show = scrollY > threshold;
+function onScroll() {
+  if (!hdr) return;
+  const threshold = window.innerHeight * 0.45;
+  const show = window.scrollY > threshold;
   hdr.classList.toggle('show', show);
   document.body.classList.toggle('shrunk', show);
 }
-document.addEventListener('scroll', onScroll, {passive:true});
+document.addEventListener('scroll', onScroll, { passive: true });
 onScroll();
 
-// Color palette per spec (includes white)
+// ==============================
+// Tactile keys: press anim + color rotate
+// (palette only for the key backgrounds)
+// ==============================
 const PALETTE = ['#FFDC23', '#661FFF', '#F8376E', '#00FCAA', '#FFFFFF'];
-
-// Utility: pick a color different from current background
 function nextColor(current) {
   const choices = PALETTE.filter(c => c.toLowerCase() !== (current || '').toLowerCase());
   return choices[Math.floor(Math.random() * choices.length)];
 }
-
-// Hook up all tactile keys
-document.querySelectorAll('.tactile .key').forEach(key => {
+$$('.tactile .key').forEach(key => {
   key.addEventListener('click', () => {
-    // Toggle pressed animation (class also set by :active for mouse)
     key.classList.add('is-pressed');
     setTimeout(() => key.classList.remove('is-pressed'), 110);
 
-    // Rotate background color
     const computed = getComputedStyle(key).backgroundColor;
-    // Convert rgb(...) to hex for comparison (simple parse)
     let currentHex = '';
     if (computed.startsWith('rgb')) {
       const [r, g, b] = computed.match(/\d+/g).map(Number);
@@ -81,160 +84,189 @@ document.querySelectorAll('.tactile .key').forEach(key => {
   });
 });
 
-/* --------------------------------------------------------- */
-
-
-/* About: typewriter on first reveal */
+// ==============================
+// About: typewriter on first reveal
+// ==============================
 const bioEl = $('#typedBio');
-const bioText = `Hi! I'm Aizat — I craft playful, tactile interfaces and ship them with clean, resilient code. I care about accessibility and performance, and love turning scrappy prototypes into polished products.`;
-let typed = false;
-const io = new IntersectionObserver(([e])=>{
-  if (e.isIntersecting && !typed){
-    typed = true; typeWrite(bioEl, bioText, 70);
-  }
-},{threshold:0.35});
-io.observe(bioEl);
-function typeWrite(el, text, speed=70){
-  let i=0;
-  (function tick(){
-    el.textContent = text.slice(0, i++);
-    if (i<=text.length){
-      const ch = text[i-1]; const delay = (ch==='.'||ch===','? 160:0);
-      setTimeout(tick, speed+delay);
+if (bioEl) {
+  const bioText = `Hi! I'm Aizat — I craft playful, tactile interfaces and ship them with clean, resilient code. I care about accessibility and performance, and love turning scrappy prototypes into polished products.`;
+  let typed = false;
+
+  const io = new IntersectionObserver(([e]) => {
+    if (e.isIntersecting && !typed) {
+      typed = true; typeWrite(bioEl, bioText, 70);
     }
-  })();
+  }, { threshold: 0.35 });
+  io.observe(bioEl);
+
+  function typeWrite(el, text, speed = 70) {
+    let i = 0;
+    (function tick() {
+      el.textContent = text.slice(0, i++);
+      if (i <= text.length) {
+        const ch = text[i - 1];
+        const delay = (ch === '.' || ch === ',') ? 160 : 0;
+        setTimeout(tick, speed + delay);
+      }
+    })();
+  }
 }
 
-/* Works: filter + custom cursor pill */
+// ==============================
+// Works: single-select filter + cursor pill
+// (cards use data-category: product | experimentals | drawings)
+// ==============================
 const works = $('.works');
-const segs = $$('.seg[data-filter]');
-const cards = $$('.grid .proj');
-const pill = $('#cursorPill');
+const segs  = $$('.seg[data-filter]');
+const grid  = $('.grid');
+const cards = grid ? $$('.proj', grid) : [];
+const pill  = $('#cursorPill');
 
-function applyFilter(key){
-  segs.forEach(s=>s.classList.toggle('is-active', s.dataset.filter===key));
-  cards.forEach(c=>{
-    const tags = (c.getAttribute('data-tags')||'').toLowerCase();
-    c.style.display = tags.includes(key) ? '' : 'none';
+function applyFilter(key) {
+  // button states
+  segs.forEach(s => s.classList.toggle('is-active', s.dataset.filter === key));
+  // show/hide cards based on data-category
+  cards.forEach(c => {
+    const cat = (c.getAttribute('data-category') || '').toLowerCase();
+    c.style.display = cat === key ? '' : 'none';
   });
 }
-segs.forEach(s=>s.addEventListener('click', ()=>applyFilter(s.dataset.filter)));
-applyFilter('work');
 
-works.addEventListener('mousemove', e=>{
-  if (!e.target.closest('.proj')) { works.classList.remove('hovering'); pill.style.opacity=0; return; }
-  works.classList.add('hovering');
-  pill.style.transform = `translate(${e.clientX+14}px, ${e.clientY+14}px)`;
-});
-works.addEventListener('mouseleave', ()=>{ works.classList.remove('hovering'); pill.style.opacity=0; });
+segs.forEach(s => s.addEventListener('click', () => applyFilter(s.dataset.filter)));
 
-/* Smooth internal scroll */
-document.addEventListener('click', e=>{
+// Default to "product" if present; else first tab
+const defaultKey = segs.some(s => s.dataset.filter === 'product') ? 'product'
+                  : (segs[0]?.dataset.filter || 'product');
+applyFilter(defaultKey);
+
+// Custom cursor pill follows mouse within .works over .proj
+if (works && pill) {
+  works.addEventListener('mousemove', e => {
+    const overProj = e.target.closest('.proj');
+    if (!overProj) { works.classList.remove('hovering'); pill.style.opacity = 0; return; }
+    works.classList.add('hovering');
+    pill.style.opacity = 1;
+    pill.style.transform = `translate(${e.clientX + 14}px, ${e.clientY + 14}px)`;
+  });
+  works.addEventListener('mouseleave', () => {
+    works.classList.remove('hovering');
+    pill.style.opacity = 0;
+  });
+}
+
+// Smooth internal scroll for on-page anchors
+document.addEventListener('click', e => {
   const a = e.target.closest('a[href^="#"]');
   if (!a) return;
   const id = a.getAttribute('href').slice(1);
   const el = document.getElementById(id);
-  if (el){ e.preventDefault(); el.scrollIntoView({behavior:'smooth', block:'start'}); }
+  if (el) { e.preventDefault(); el.scrollIntoView({ behavior: 'smooth', block: 'start' }); }
 });
 
-/* Snake Game */
-const overlay = $('#gameOverlay');
-const scoreVal = $('#scoreVal');
+// ==============================
+// Snake Game (unchanged logic, with guards)
+// ==============================
+const overlay    = $('#gameOverlay');
+const scoreVal   = $('#scoreVal');
 const finalScore = $('#finalScore');
-const dialog = $('#gameOver');
-const playAgain = $('#playAgain');
-const exitBtns = [$('#exitGame'), $('#exitGame2')];
-const canvas = $('#gameCanvas');
-const ctx = canvas.getContext('2d');
-const grid=20, cols=Math.floor(canvas.width/grid), rows=Math.floor(canvas.height/grid);
-let loop=null, snake=[], dir={x:1,y:0}, next={x:1,y:0}, food=null, score=0;
+const dialog     = $('#gameOver');
+const playAgain  = $('#playAgain');
+const exitBtns   = [$('#exitGame'), $('#exitGame2')].filter(Boolean);
+const canvas     = $('#gameCanvas');
+const ctx        = canvas ? canvas.getContext('2d') : null;
 
-function showGame(){ overlay.classList.add('on'); overlay.setAttribute('aria-hidden','false'); start(); }
-function hideGame(){ overlay.classList.remove('on'); overlay.setAttribute('aria-hidden','true'); stop(); }
-$('#playfulBtn').addEventListener('click', showGame);
-exitBtns.forEach(b=>b.addEventListener('click', hideGame));
+if (canvas && ctx) {
+  const gridSize = 20;
+  const cols = Math.floor(canvas.width / gridSize);
+  const rows = Math.floor(canvas.height / gridSize);
+  let loop = null, snake = [], dir = {x:1,y:0}, next = {x:1,y:0}, food = null, score = 0;
 
-function start(){ reset(); window.addEventListener('keydown', onKey); loop=setInterval(step,180); }
-function stop(){ clearInterval(loop); window.removeEventListener('keydown', onKey); }
-function reset(){
-  score=0; scoreVal.textContent='0'; dialog.classList.remove('show');
-  const cx=cols>>1, cy=rows>>1;
-  snake=[{x:cx,y:cy},{x:cx-1,y:cy},{x:cx-2,y:cy}];
-  dir=next={x:1,y:0}; food=placeFood(); draw();
-}
-function placeFood(){ let p; do{ p={x:(Math.random()*cols)|0,y:(Math.random()*rows)|0}; }while(snake.some(s=>s.x===p.x&&s.y===p.y)); return p; }
-function onKey(e){
-  const k=e.key.toLowerCase();
-  if((k==='arrowup'||k==='w') && dir.y!==1) next={x:0,y:-1};
-  if((k==='arrowdown'||k==='s') && dir.y!==-1) next={x:0,y:1};
-  if((k==='arrowleft'||k==='a') && dir.x!==1) next={x:-1,y:0};
-  if((k==='arrowright'||k==='d') && dir.x!==-1) next={x:1,y:0};
-}
-function step(){
-  dir=next;
-  const head={x:snake[0].x+dir.x,y:snake[0].y+dir.y};
-  if(head.x<0||head.y<0||head.x>=cols||head.y>=rows){ end(); return; }
-  snake.unshift(head);
-  if(head.x===food.x&&head.y===food.y){ score++; scoreVal.textContent=String(score); food=placeFood(); }
-  else snake.pop();
-  draw();
-}
-function draw(){
-  ctx.clearRect(0,0,canvas.width,canvas.height);
-  ctx.fillStyle='#4ad8ff'; ctx.beginPath();
-  ctx.arc(food.x*grid+grid/2, food.y*grid+grid/2, grid*0.38, 0, Math.PI*2); ctx.fill();
-  ctx.fillStyle='#2bdc76';
-  snake.forEach((s,i)=>{ const x=s.x*grid,y=s.y*grid; ctx.fillRect(x+2,y+2,grid-4,grid-4);
-    if(i===0){ ctx.fillStyle='#111'; ctx.fillRect(x+grid/2,y+6,4,4); ctx.fillStyle='#2bdc76'; }});
-}
-function end(){ stop(); finalScore.textContent=String(score); dialog.classList.add('show'); }
-playAgain.addEventListener('click', ()=>{ reset(); loop=setInterval(step,180); window.addEventListener('keydown', onKey); });
+  function showGame(){ overlay.classList.add('on'); overlay.setAttribute('aria-hidden','false'); start(); }
+  function hideGame(){ overlay.classList.remove('on'); overlay.setAttribute('aria-hidden','true'); stop(); }
 
-/* Keyboard open for PLAYFUL */
-$('#playfulBtn').addEventListener('keydown', e=>{
-  if (e.key===' '||e.key==='Enter'){ e.preventDefault(); showGame(); }
-});
+  const playBtn = $('#playfulBtn');
+  if (playBtn) playBtn.addEventListener('click', showGame);
+  exitBtns.forEach(b=>b.addEventListener('click', hideGame));
 
-/**
- * Ensure the keycaps in .group-interactive spell “tactical”
- * without changing the HTML markup in source.
- * - If fewer caps exist, clone the last one until we have 8.
- * - If more exist, remove extras.
- * - Then set each glyph.
- */
+  function start(){ reset(); window.addEventListener('keydown', onKey); loop = setInterval(step, 180); }
+  function stop(){ clearInterval(loop); window.removeEventListener('keydown', onKey); }
+  function reset(){
+    score = 0; if (scoreVal) scoreVal.textContent = '0'; dialog.classList.remove('show');
+    const cx = cols >> 1, cy = rows >> 1;
+    snake = [{x:cx,y:cy},{x:cx-1,y:cy},{x:cx-2,y:cy}];
+    dir = next = {x:1,y:0}; food = placeFood(); draw();
+  }
+  function placeFood(){
+    let p;
+    do { p = { x: (Math.random()*cols)|0, y: (Math.random()*rows)|0 }; }
+    while (snake.some(s=>s.x===p.x && s.y===p.y));
+    return p;
+  }
+  function onKey(e){
+    const k = e.key.toLowerCase();
+    if ((k==='arrowup'||k==='w')    && dir.y!== 1) next = {x: 0,y:-1};
+    if ((k==='arrowdown'||k==='s')  && dir.y!==-1) next = {x: 0,y: 1};
+    if ((k==='arrowleft'||k==='a')  && dir.x!== 1) next = {x:-1,y: 0};
+    if ((k==='arrowright'||k==='d') && dir.x!==-1) next = {x: 1,y: 0};
+  }
+  function step(){
+    dir = next;
+    const head = { x: snake[0].x + dir.x, y: snake[0].y + dir.y };
+    if (head.x<0 || head.y<0 || head.x>=cols || head.y>=rows) { end(); return; }
+    snake.unshift(head);
+    if (head.x===food.x && head.y===food.y) { score++; if (scoreVal) scoreVal.textContent = String(score); food = placeFood(); }
+    else snake.pop();
+    draw();
+  }
+  function draw(){
+    ctx.clearRect(0,0,canvas.width,canvas.height);
+    // food
+    ctx.fillStyle = '#4ad8ff'; ctx.beginPath();
+    ctx.arc(food.x*gridSize+gridSize/2, food.y*gridSize+gridSize/2, gridSize*0.38, 0, Math.PI*2); ctx.fill();
+    // snake
+    ctx.fillStyle = '#2bdc76';
+    snake.forEach((s,i) => {
+      const x = s.x*gridSize, y = s.y*gridSize;
+      ctx.fillRect(x+2, y+2, gridSize-4, gridSize-4);
+      if (i===0) {
+        ctx.fillStyle = '#111'; ctx.fillRect(x+gridSize/2, y+6, 4, 4);
+        ctx.fillStyle = '#2bdc76';
+      }
+    });
+  }
+  function end(){ stop(); if (finalScore) finalScore.textContent = String(score); dialog.classList.add('show'); }
+  if (playAgain) playAgain.addEventListener('click', () => { reset(); loop = setInterval(step, 180); window.addEventListener('keydown', onKey); });
+
+  // Keyboard open for PLAYFUL (accessibility)
+  if (playBtn) {
+    playBtn.addEventListener('keydown', e=>{
+      if (e.key === ' ' || e.key === 'Enter') { e.preventDefault(); showGame(); }
+    });
+  }
+}
+
+// ==============================
+// Optional: normalize external “group-interactive” if present (safe to keep)
+// ==============================
 (function () {
-  const WORD = "tactical"; // 8 letters
-  const group = document.querySelector(".group-interactive");
+  const WORD = 'tactical';
+  const group = document.querySelector('.group-interactive');
   if (!group) return;
 
-  // collect current keycaps by the inner .text node
-  const capTextEls = () => Array.from(group.querySelectorAll(".text"));
-
-  // If there are no .text nodes yet, bail safely
+  const capTextEls = () => Array.from(group.querySelectorAll('.text'));
   if (capTextEls().length === 0) return;
 
-  // Grow to needed length by cloning the last cap
   while (capTextEls().length < WORD.length) {
     const lastCap = group.lastElementChild;
     if (!lastCap) break;
     const clone = lastCap.cloneNode(true);
     group.appendChild(clone);
   }
-
-  // Shrink if too many caps
   while (capTextEls().length > WORD.length) {
     group.lastElementChild?.remove();
   }
+  capTextEls().forEach((el, i) => el.textContent = WORD[i]);
 
-  // Set letters
-  capTextEls().forEach((el, i) => {
-    el.textContent = WORD[i];
-  });
-
-  // Accessibility hint (optional, doesn’t touch structure)
-  const groupRole = group.getAttribute("role");
-  if (!groupRole) {
-    group.setAttribute("role", "group");
-  }
-  group.setAttribute("aria-label", `Interactive word: ${WORD}`);
+  if (!group.getAttribute('role')) group.setAttribute('role','group');
+  group.setAttribute('aria-label', `Interactive word: ${WORD}`);
 })();

@@ -4,70 +4,61 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Aizat — Portfolio</title>
-<!-- Load Rubik font properly -->
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
-<link href="https://fonts.googleapis.com/css2?family=Bungee&family=Rubik:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  
+  <!-- Fonts: Rubik + Bungee -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Bungee&family=Rubik:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
 
-<!-- Link your stylesheet -->
-<link rel="stylesheet" href="Styles.css">
+  <!-- Stylesheet -->
+  <link rel="stylesheet" href="Styles.css">
 </head>
-
 <body>
-
   <!-- Skip link -->
   <a class="skip-link" href="#main">Skip to main content</a>
 
-  <!-- Sticky header: appears after scroll (logo docks here) -->
+  <!-- Sticky site header (single anchor; no nesting) -->
   <header class="hdr" aria-label="Site">
-    <a href="#top" class="hdr__brand" aria-label="Home">
-      <!-- placeholder logo -->
-       <a href="/" class="hdr__link" aria-label="Home">
-        <img class="hdr__logo" src="logo.svg" alt="Site logo">
+    <a href="/" class="hdr__link" aria-label="Home">
+      <img class="hdr__logo" src="logo.svg" alt="Site logo">
     </a>
   </header>
   
-<!-- Floating hand button → right drawer -->
-<button class="hand" id="drawerToggle" aria-controls="drawer" aria-expanded="false" aria-label="Open menu">
-  <span class="hand__inner">
-    <img src="Hand_icon.svg" alt="Open menu" class="hand__icon">
-  </span>
-</button>
+  <!-- Floating hand button → right drawer -->
+  <button class="hand" id="drawerToggle" aria-controls="drawer" aria-expanded="false" aria-label="Open menu">
+    <span class="hand__inner">
+      <img src="Hand_icon.svg" alt="Open menu" class="hand__icon">
+    </span>
+  </button>
 
-
-<!-- Right drawer -->
-<aside id="drawer" class="drawer" aria-hidden="true">
-  <div class="drawer__body">
-    <nav class="drawer__nav" aria-label="Primary">
-      <a class="drawer__link" href="#about">About</a>
-      <a class="drawer__link" href="#work">My works</a>
-      <a class="drawer__link" href="/diary.html">Diary notes</a>
-      <a class="drawer__link" href="#contact">Contact</a>
-    </nav>
-  </div>
-</aside>
-
-
+  <!-- Right drawer -->
+  <aside id="drawer" class="drawer" aria-hidden="true">
+    <div class="drawer__body">
+      <nav class="drawer__nav" aria-label="Primary">
+        <a class="drawer__link" href="#about">About</a>
+        <a class="drawer__link" href="#work">My works</a>
+        <a class="drawer__link" href="/diary.html">Diary notes</a>
+        <a class="drawer__link" href="#contact">Contact</a>
+      </nav>
+    </div>
+  </aside>
 
   <main id="main">
-
     <!-- HERO -->
     <section id="top" class="hero" aria-labelledby="hero-title">
       <div class="hero__inner">
         <h1 id="hero-title" class="hero__title">
           <span class="blk">Designing digital</span><br />
           <span class="blk">with a sense of</span><br />
-         <button id="playfulBtn" class="playful" aria-label="Play the snake game">
-          <span class="playful__wrap" aria-hidden="true">
-            <span class="playful__letter">P</span>
-            <span class="playful__letter">L</span>
-            <span class="playful__letter">A</span>
-            <span class="playful__letter">Y</span>
-          </span>
-        </button>
-
-
+          <button id="playfulBtn" class="playful" aria-label="Play the snake game">
+            <span class="playful__wrap" aria-hidden="true">
+              <span class="playful__letter">P</span>
+              <span class="playful__letter">L</span>
+              <span class="playful__letter">A</span>
+              <span class="playful__letter">Y</span>
+            </span>
+          </button>
           <span>and</span> <br />
           <span class="tactile" aria-label="tactile">
             <button class="key" aria-label="t">t</button>
@@ -80,21 +71,14 @@
           </span><br />
         </h1>
 
-   <header class="hdr" id="hdr">
-    <a href="/" class="hdr__link" aria-label="Home">
-    <img class="hdr__logo" src="logo.svg" alt="Site logo">
-  </a> </header>
+        <!-- Big centered hero logo (separate element; no duplicate IDs) -->
+        <div class="hero__logo">
+          <a href="/" class="hdr__link" aria-label="Home">
+            <img class="hdr__logo" src="logo.svg" alt="Site logo">
+          </a>
+        </div>
 
-    <header class="hero__logo" id="hdr">
-    <a href="/" class="hdr__link" aria-label="Home">
-    <img class="hdr__logo" src="logo.svg" alt="Site logo">
-  </a> </header>
-
-
-
-
-
-        <!-- scalloped footer of hero (like Studio Elio) -->
+        <!-- scalloped footer of hero -->
         <div class="scallop scallop--hero" aria-hidden="true"></div>
       </div>
     </section>
@@ -102,31 +86,24 @@
     <!-- ABOUT (MacBook-height split) -->
     <section id="about" class="about">
       <div class="about__left">
-        <h2 class="about__title">The story of my life.</h2>
+        <h2 class="about__title">The story<br>of my life.</h2>
         <p class="about__txt">
-        I build little worlds inside the screen — places where play meets purpose. 
-        Every project is an experiment in how design can move, breathe, and connect.
+          I build worlds inside the screen. So welcome to my side, where every project is an experiment in how design can move, breathe, and connect.
         </p>
-        <h4 class="about__email">
-          <a href="mailto:Aizatkina1104@gmail.com">Aizatkina1104@gmail.com</a>
-        </h4>
+        <a class="btn about__cta" href="/diary.html" aria-label="Open diary notes">
+          <span class="btn__inner">Notes and Thoughts</span>
+        </a>
       </div>
-
 
       <div class="about__right">
         <div class="card">
           <div class="card__top">
             <div class="card__avatar">
-              <!-- placeholder avatar -->
-              <svg viewBox="0 0 80 80" aria-hidden="true">
-                <circle cx="40" cy="40" r="38" fill="#fff" stroke="#111" stroke-width="4"/>
-                <circle cx="40" cy="34" r="14" fill="#111"/>
-                <rect x="16" y="50" width="48" height="20" rx="10" fill="#111"/>
-              </svg>
+              <img src="avatar.jpeg" alt="Aizat Myrzakhmetova" />
             </div>
             <div class="card__who">
-              <strong class="card__name">Aizat Myrzakhmetova</strong>
-              <span class="card__role">Made in Kazakhstan :)</span>
+              <strong class="card__name">Aizat Myrzakhmetova</strong><br />
+              <span class="card__role">Made in Kazakhstan 🇰🇿</span>
             </div>
           </div>
 
@@ -135,15 +112,23 @@
           </div>
 
           <div class="card__actions">
-            <a class="keycap" href="https://bsky.app/profile/annafilou.com" target="_blank" rel="noreferrer noopener" aria-label="CV"><span>📄</span></a>
-            <a class="keycap" href="https://www.linkedin.com/in/aizat-myrzakhmetova/" target="_blank" rel="noreferrer noopener" aria-label="LinkedIn"><span>in</span></a>
-            <a class="keycap" href="https://www.behance.net/aizatmyrzakh" target="_blank" rel="noreferrer noopener" aria-label="Behance"><span>Be</span></a>
-            <a class="keycap" href="https://www.dotsandlines.io/" target="_blank" rel="noreferrer noopener" aria-label="Diary"><span>✍️</span></a>
+            <a class="keycap" href="https://bsky.app/profile/annafilou.com" target="_blank" rel="noreferrer noopener" aria-label="CV">
+              <span><img src="cv_icon.svg" alt="CV icon"></span>
+            </a>
+            <a class="keycap" href="https://www.linkedin.com/in/aizat-myrzakhmetova/" target="_blank" rel="noreferrer noopener" aria-label="LinkedIn">
+              <span><img src="linkedin_icon.svg" alt="LinkedIn icon"></span>
+            </a>
+            <a class="keycap" href="https://www.behance.net/aizatmyrzakh" target="_blank" rel="noreferrer noopener" aria-label="Behance">
+              <span><img src="behance_icon.svg" alt="Behance icon"></span>
+            </a>
+            <a class="keycap" href="mailto:Aizatkina1104@gmail.com" aria-label="Email Aizat Myrzakhmetova">
+              <span><img src="email_icon.svg" alt="Email icon"></span>
+            </a>
           </div>
         </div>
       </div>
 
-      <div class="scallop" aria-hidden="true"></div>
+      <div class="scallop scallop--about" aria-hidden="true"></div>
     </section>
 
     <!-- WORKS -->
@@ -152,105 +137,121 @@
 
       <!-- floating filter (inside section only) -->
       <div class="filter" role="tablist" aria-label="Filter projects">
-        <button class="seg is-active" role="tab" aria-selected="true" data-filter="work">WORK</button>
-        <button class="seg" role="tab" aria-selected="false" data-filter="selected">SELECTED</button>
-        <button class="seg" role="tab" aria-selected="false" data-filter="prototype">PROTOTYPE</button>
-        <button class="seg" role="tab" aria-selected="false" data-filter="archived">ARCHIVED</button>
-        <button class="seg seg--icon" aria-label="Toggle layout">⬛</button>
+        <button class="seg is-active" role="tab" aria-selected="true" data-filter="product">Product design</button>
+        <button class="seg" role="tab" aria-selected="false" data-filter="experimentals">Experimentals</button>
+        <button class="seg" role="tab" aria-selected="false" data-filter="drawings">Drawings</button>
       </div>
 
       <!-- custom cursor pill -->
       <div id="cursorPill" class="cursor-pill">VIEW WORK</div>
 
       <div class="grid">
-        <!-- 12 placeholder 3:4 cards with 16px stroke -->
-        <!-- use picsum placeholders; swap with real covers later -->
-        <a href="#" class="proj card--work" data-tags="work selected" aria-label="Open project 1">
-          <figure class="proj__img" style="--img:url('https://picsum.photos/600/800?random=11')"></figure>
-          <div class="proj__stroke"></div><span class="proj__title">Project Title 01</span>
-        </a>
-        <a href="#" class="proj card--work" data-tags="work" aria-label="Open project 2">
-          <figure class="proj__img" style="--img:url('https://picsum.photos/600/800?random=12')"></figure>
-          <div class="proj__stroke"></div><span class="proj__title">Project Title 02</span>
-        </a>
-        <a href="#" class="proj card--prototype" data-tags="prototype" aria-label="Open project 3">
-          <figure class="proj__img" style="--img:url('https://picsum.photos/600/800?random=13')"></figure>
-          <div class="proj__stroke"></div><span class="proj__title">Prototype 03</span>
-        </a>
-        <a href="#" class="proj card--selected" data-tags="selected" aria-label="Open project 4">
-          <figure class="proj__img" style="--img:url('https://picsum.photos/600/800?random=14')"></figure>
-          <div class="proj__stroke"></div><span class="proj__title">Selected 04</span>
-        </a>
-        <a href="#" class="proj card--archived" data-tags="archived" aria-label="Open project 5">
-          <figure class="proj__img" style="--img:url('https://picsum.photos/600/800?random=15')"></figure>
-          <div class="proj__stroke"></div><span class="proj__title">Archived 05</span>
-        </a>
-        <a href="#" class="proj card--work" data-tags="work" aria-label="Open project 6">
-          <figure class="proj__img" style="--img:url('https://picsum.photos/600/800?random=16')"></figure>
-          <div class="proj__stroke"></div><span class="proj__title">Project Title 06</span>
-        </a>
-        <a href="#" class="proj card--prototype" data-tags="prototype" aria-label="Open project 7">
-          <figure class="proj__img" style="--img:url('https://picsum.photos/600/800?random=17')"></figure>
-          <div class="proj__stroke"></div><span class="proj__title">Prototype 07</span>
-        </a>
-        <a href="#" class="proj card--selected" data-tags="selected" aria-label="Open project 8">
-          <figure class="proj__img" style="--img:url('https://picsum.photos/600/800?random=18')"></figure>
-          <div class="proj__stroke"></div><span class="proj__title">Selected 08</span>
-        </a>
-        <a href="#" class="proj card--archived" data-tags="archived" aria-label="Open project 9">
-          <figure class="proj__img" style="--img:url('https://picsum.photos/600/800?random=19')"></figure>
-          <div class="proj__stroke"></div><span class="proj__title">Archived 09</span>
-        </a>
-        <a href="#" class="proj card--work" data-tags="work selected" aria-label="Open project 10">
-          <figure class="proj__img" style="--img:url('https://picsum.photos/600/800?random=20')"></figure>
-          <div class="proj__stroke"></div><span class="proj__title">Project Title 10</span>
-        </a>
-        <a href="#" class="proj card--work" data-tags="work" aria-label="Open project 11">
-          <figure class="proj__img" style="--img:url('https://picsum.photos/600/800?random=21')"></figure>
-          <div class="proj__stroke"></div><span class="proj__title">Project Title 11</span>
-        </a>
-        <a href="#" class="proj card--prototype" data-tags="prototype" aria-label="Open project 12">
-          <figure class="proj__img" style="--img:url('https://picsum.photos/600/800?random=22')"></figure>
-          <div class="proj__stroke"></div><span class="proj__title">Prototype 12</span>
-        </a>
+  <!-- 1. Product design – Root -->
+  <a href="#" class="proj" data-category="product"
+     style="--img:url('https://picsum.photos/800/1140?random=201')"
+     aria-label="Open: Root — Empowering producers & agriculture">
+    <div class="proj__content">
+      <div class="proj__chips">
+        <span class="chip">Agriculture</span>
+        <span class="chip">University case</span>
       </div>
+      <h3 class="proj__title">Root: Empowering producers &amp; agriculture</h3>
+    </div>
+  </a>
 
-      <div class="scallop" aria-hidden="true"></div>
+  <!-- 2. Product design – Eurasian Banking App -->
+  <a href="#" class="proj" data-category="product"
+     style="--img:url('https://picsum.photos/800/1140?random=202')"
+     aria-label="Open: Eurasian Banking App">
+    <div class="proj__content">
+      <div class="proj__chips">
+        <span class="chip">Fintech</span>
+        <span class="chip">Released</span>
+      </div>
+      <h3 class="proj__title">Eurasian Banking App</h3>
+    </div>
+  </a>
+
+  <!-- 3. Product design – Mobile App DOM -->
+  <a href="#" class="proj" data-category="product"
+     style="--img:url('https://picsum.photos/800/1140?random=203')"
+     aria-label="Open: Mobile App DOM">
+    <div class="proj__content">
+      <div class="proj__chips">
+        <span class="chip">Rental property</span>
+      </div>
+      <h3 class="proj__title">Mobile App DOM</h3>
+    </div>
+  </a>
+
+  <!-- 4. Product design – Pottery workshop “Keramist” -->
+  <a href="#" class="proj" data-category="product"
+     style="--img:url('https://picsum.photos/800/1140?random=204')"
+     aria-label="Open: Pottery workshop Keramist">
+    <div class="proj__content">
+      <div class="proj__chips">
+        <span class="chip">Pottery</span>
+        <span class="chip">Private business</span>
+        <span class="chip">Released</span>
+      </div>
+      <h3 class="proj__title">Business website of the pottery workshop “Keramist”</h3>
+    </div>
+  </a>
+
+  <!-- 5. Product design – CarToonz -->
+  <a href="#" class="proj" data-category="product"
+     style="--img:url('https://picsum.photos/800/1140?random=205')"
+     aria-label="Open: CarToonz">
+    <div class="proj__content">
+      <div class="proj__chips">
+        <span class="chip">In-car experience</span>
+        <span class="chip">University case</span>
+      </div>
+      <h3 class="proj__title">CarToonz</h3>
+    </div>
+  </a>
+
+  <!-- 6. Experimentals – Footprints -->
+  <a href="#" class="proj" data-category="experimentals"
+     style="--img:url('https://picsum.photos/800/1140?random=206')"
+     aria-label="Open: Footprints">
+    <div class="proj__content">
+      <div class="proj__chips">
+        <span class="chip">Sustainability</span>
+        <span class="chip">AR</span>
+      </div>
+      <h3 class="proj__title">Footprints</h3>
+    </div>
+  </a>
+</div>
+
+
     </section>
 
     <!-- FOOTER / CTA -->
     <footer id="contact" class="foot" aria-labelledby="cta-title">
       <div class="foot__left">
         <h2 id="cta-title" class="foot__title">Have a project<br>in mind?</h2>
-        <p class="foot__sub">We’d love to help bring your vision to life</p>
-        <a class="btn" href="mailto:Aizatkina1104@gmail.com"><span class="btn__inner">CONTACT US!</span></a>
+        <p class="foot__sub">Let's have a magic and bring your vision to life</p>
+        <a class="btn" href="mailto:Aizatkina1104@gmail.com"><span class="btn__inner">CONTACT ME!</span></a>
         <p class="foot__copy">©2025 Aizat Myrzakhmetova. All rights reserved.</p>
       </div>
 
       <div class="foot__right">
-        <!-- placeholder logo -->
-        <div class="foot__logo">
-          <svg viewBox="0 0 200 64" width="120" height="38" aria-hidden="true">
-            <rect width="200" height="64" rx="14" fill="#111"/>
-            <text x="100" y="42" text-anchor="middle" font-size="34" fill="#fff" font-weight="900" font-family="Rubik">LOGO</text>
-          </svg>
+       <div class="foot__logo">
+  <img src="logo.svg" alt="Aizat Myrzakhmetova logo" width="160" height="auto" />
         </div>
         <div class="foot__links">
           <h4 class="foot__stay">Stay Connected</h4>
           <a href="#" target="_blank" rel="noreferrer noopener">INSTAGRAM</a>
           <a href="https://www.linkedin.com/in/aizat-myrzakhmetova/" target="_blank" rel="noreferrer noopener">LINKEDIN</a>
-          <a href="mailto:Aizatkina1104@gmail.com">HELLO@AIZAT.COM</a>
+          <a href="mailto:Aizatkina1104@gmail.com">Aizatkina1104@gmail.com</a>
         </div>
-        <div class="foot__legal">
-          <a href="#">PRIVACY</a>
-          <a href="#">ACCESSIBILITY</a>
-        </div>
+     
       </div>
     </footer>
-
   </main>
 
-  <!-- SNAKE OVERLAY -->
   <div id="gameOverlay" class="game" aria-hidden="true">
     <div class="game__bar">
       <span class="score">Score: <span id="scoreVal">0</span></span>

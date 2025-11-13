@@ -54,13 +54,16 @@ a:focus-visible, button:focus-visible{ outline:3px solid #7c5cff; outline-offset
 .drawer__link:hover,.drawer__link:focus{ border-color:var(--ink); color:#000 }
 
 /* Scallops */
-/* Scallops: add -webkit-mask for cross-browser */
-.scallop{ position:relative; height:36px; width:100%; background:var(--bg); mask:radial-gradient(18px at 18px 18px,#000 98%, transparent 101%) left/36px 36px repeat-x; -webkit-mask:radial-gradient(18px at 18px 18px,#000 98%, transparent 101%) left/36px 36px repeat-x; display:block }
-.scallop--hero{ position:absolute; bottom:0; left:0; width:100%; background:#CDCDCD; }
+/* Scallops: add -webkit-mask for cross-browser - circle centers at bottom edge */
+.scallop{ position:relative; height:36px; width:100%; background:var(--bg); mask:radial-gradient(18px at 18px 36px,#000 98%, transparent 101%) left/36px 36px repeat-x; -webkit-mask:radial-gradient(18px at 18px 36px,#000 98%, transparent 101%) left/36px 36px repeat-x; display:block }
+/* Hero scallop: first scallop, matches About section color */
+.scallop--hero{ position:absolute; bottom:0; left:0; width:100%; background:#CDCDCD; z-index:1; pointer-events:none; }
+/* About scallop: second scallop, matches About section color */
 .scallop--about{ position:absolute; bottom:0; left:0; width:100%; background:#CDCDCD; z-index:1; pointer-events:none; }
-.scallop--hero{ position:absolute; bottom:0; left:0; width:100%; background:#CDCDCD; }
-/* New: About scallop pinned to bottom */
-.scallop--about{ position:absolute; bottom:0; left:0; width:100%; background:#CDCDCD; }
+/* Works scallop: matches next section (Footer) color */
+.scallop--works{ position:absolute; bottom:0; left:0; width:100%; background:#fff; z-index:1; pointer-events:none; }
+/* Footer scallop: matches page background */
+.scallop--foot{ position:absolute; bottom:0; left:0; width:100%; background:var(--bg); z-index:1; pointer-events:none; }
 
 /* =========================
    HERO
@@ -134,7 +137,7 @@ body.shrunk .hdr{ transform:scale(1) }
 /* =========================
    WORKS
    ========================= */
-.works{ position:relative; padding:12vh 6vw 16vh; background:var(--bg) }
+.works{ position:relative; padding:12vh 6vw calc(16vh + 36px); background:var(--bg) }
 .grid{ display:grid; gap:28px; grid-template-columns:1fr }
 @media (min-width:640px){ .grid{ grid-template-columns:repeat(2,1fr) } }
 @media (min-width:980px){ .grid{ grid-template-columns:repeat(3,1fr) } }
@@ -246,7 +249,7 @@ text-transform: uppercase;
 /* =========================
    FOOTER
    ========================= */
-.foot{ display:grid; grid-template-columns:1fr 1fr; gap:6vw; align-items:start; padding:12vh 6vw; background:#fff }
+.foot{ position:relative; display:grid; grid-template-columns:1fr 1fr; gap:6vw; align-items:start; padding:12vh 6vw calc(12vh + 36px); background:#fff }
 @media (max-width:900px){ .foot{ grid-template-columns:1fr } }
 .foot__title{ font-size:clamp(36px,7vw,92px); margin:0 0 10px; font-weight:900 }
 .foot__sub{ color:#3b3b3b; font-weight:700; margin:.5rem 0 1.25rem }

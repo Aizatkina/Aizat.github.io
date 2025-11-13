@@ -58,8 +58,8 @@ a:focus-visible, button:focus-visible{ outline:3px solid #7c5cff; outline-offset
 .scallop{ position:relative; height:36px; width:100%; background:var(--bg); mask:radial-gradient(18px at 18px 36px,#000 98%, transparent 101%) left/36px 36px repeat-x; -webkit-mask:radial-gradient(18px at 18px 36px,#000 98%, transparent 101%) left/36px 36px repeat-x; display:block }
 /* Hero scallop: first scallop, matches About section color */
 .scallop--hero{ position:absolute; bottom:0; left:0; width:100%; background:#CDCDCD; z-index:1; pointer-events:none; }
-/* About scallop: second scallop, matches About section color */
-.scallop--about{ position:absolute; bottom:0; left:0; width:100%; background:#CDCDCD; z-index:1; pointer-events:none; }
+/* About scallop: downward-facing half circles with centers at end of about section */
+.scallop--about{ position:absolute; bottom:0; left:0; width:100%; height:54px; background:#CDCDCD; z-index:1; pointer-events:none; mask:radial-gradient(18px at 18px 18px, #000 98%, transparent 101%) left/36px 36px repeat-x; -webkit-mask:radial-gradient(18px at 18px 18px, #000 98%, transparent 101%) left/36px 36px repeat-x; clip-path:inset(18px 0 0 0); -webkit-clip-path:inset(18px 0 0 0); transform:translateY(18px); }
 /* Works scallop: matches next section (Footer) color */
 .scallop--works{ position:absolute; bottom:0; left:0; width:100%; background:#fff; z-index:1; pointer-events:none; }
 /* Footer scallop: matches page background */

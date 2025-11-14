@@ -64,6 +64,8 @@ a:focus-visible, button:focus-visible{ outline:3px solid #7c5cff; outline-offset
 .scallop--works{ position:absolute; bottom:0; left:0; width:100%; background:#fff; z-index:1; pointer-events:none; }
 /* Footer scallop: matches page background */
 .scallop--foot{ position:absolute; bottom:0; left:0; width:100%; background:var(--bg); z-index:1; pointer-events:none; }
+/* Project page scallop: upward-facing, matches content background */
+.scallop--project{ position:absolute; top:0; left:0; width:100%; background:var(--bg); z-index:1; pointer-events:none; }
 
 /* =========================
    HERO

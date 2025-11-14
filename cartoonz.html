@@ -1,0 +1,306 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>CarToonz — Aizat Portfolio</title>
+  
+  <!-- Fonts: Rubik + Bungee -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Bungee&family=Rubik:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+  <!-- Stylesheet -->
+  <link rel="stylesheet" href="Styles.css">
+  <style>
+    /* Video Hero Section */
+    .video-hero {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100vh;
+      z-index: 10;
+      background: #000;
+      overflow: hidden;
+    }
+
+    .video-hero video {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .video-hero.scrolled-out {
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.5s ease-out;
+    }
+
+    /* Content Section */
+    .project-content {
+      position: relative;
+      margin-top: 100vh;
+      background: var(--bg);
+      min-height: 100vh;
+    }
+
+    .project-content__header {
+      position: relative;
+      padding: 10vh 6vw calc(8vh + 60px);
+      background: #fff;
+    }
+
+    .project-content__title {
+      font-family: 'Rubik', sans-serif;
+      font-size: clamp(2.5rem, 8vw, 7.5rem);
+      font-weight: 900;
+      color: #0E0E0E;
+      margin: 0 0 2rem;
+      line-height: 1.1;
+    }
+
+    .project-content__body {
+      padding: 8vh 6vw 16vh;
+      background: var(--bg);
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .project-section {
+      margin-bottom: 6rem;
+    }
+
+    .project-section__title {
+      font-family: 'Rubik', sans-serif;
+      font-size: clamp(1.5rem, 4vw, 3rem);
+      font-weight: 700;
+      color: #0E0E0E;
+      margin: 0 0 1.5rem;
+    }
+
+    .project-section__text {
+      font-family: 'Rubik', sans-serif;
+      font-size: 1.25rem;
+      font-weight: 400;
+      line-height: 1.6;
+      color: #0E0E0E;
+      margin: 0 0 1.5rem;
+    }
+
+    .project-image {
+      width: 100%;
+      margin: 2rem 0;
+      border-radius: 1rem;
+      overflow: hidden;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    }
+
+    .project-image img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    .project-image--full {
+      width: 100%;
+    }
+
+    .project-image--half {
+      width: 100%;
+      max-width: 600px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .project-images-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 2rem;
+      margin: 2rem 0;
+    }
+
+    @media (min-width: 768px) {
+      .project-images-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 768px) {
+      .project-content__header {
+        padding: 6vh 4vw 6vh;
+      }
+
+      .project-content__body {
+        padding: 6vh 4vw 12vh;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Skip link -->
+  <a class="skip-link" href="#main">Skip to main content</a>
+
+  <!-- Sticky site header -->
+  <header class="hdr" aria-label="Site">
+    <a href="/" class="hdr__link" aria-label="Home">
+      <img class="hdr__logo" src="logo.svg" alt="Site logo">
+    </a>
+  </header>
+  
+  <!-- Floating hand button → right drawer -->
+  <button class="hand" id="drawerToggle" aria-controls="drawer" aria-expanded="false" aria-label="Open menu">
+    <span class="hand__inner">
+      <img src="Hand_icon.svg" alt="Open menu" class="hand__icon">
+    </span>
+  </button>
+
+  <!-- Right drawer -->
+  <aside id="drawer" class="drawer" aria-hidden="true">
+    <div class="drawer__body">
+      <nav class="drawer__nav" aria-label="Primary">
+        <a class="drawer__link" href="/index.html#about">About</a>
+        <a class="drawer__link" href="/index.html#work">My works</a>
+        <a class="drawer__link" href="/diary.html">Diary notes</a>
+        <a class="drawer__link" href="/index.html#contact">Contact</a>
+      </nav>
+    </div>
+  </aside>
+
+  <!-- Video Hero Section -->
+  <div class="video-hero" id="videoHero">
+    <video autoplay muted loop playsinline>
+      <source src="https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4" type="video/mp4">
+      <!-- Fallback for browsers that don't support video -->
+      Your browser does not support the video tag.
+    </video>
+  </div>
+
+  <!-- Project Content -->
+  <main id="main" class="project-content">
+    <!-- Header with Scallop -->
+    <div class="project-content__header">
+      <h1 class="project-content__title">CarToonz</h1>
+      <p class="project-section__text">In-car experience • University case</p>
+      <div class="scallop scallop--project" aria-hidden="true"></div>
+    </div>
+
+    <!-- Content Body -->
+    <div class="project-content__body">
+      <!-- Overview Section -->
+      <section class="project-section">
+        <h2 class="project-section__title">Overview</h2>
+        <p class="project-section__text">
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris.
+        </p>
+        <div class="project-image project-image--full">
+          <img src="https://picsum.photos/1200/600?random=301" alt="CarToonz project overview image">
+        </div>
+        <p class="project-section__text">
+          Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+        </p>
+      </section>
+
+      <!-- Challenge Section -->
+      <section class="project-section">
+        <h2 class="project-section__title">The Challenge</h2>
+        <p class="project-section__text">
+          Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.
+        </p>
+        <div class="project-images-grid">
+          <div class="project-image">
+            <img src="https://picsum.photos/600/400?random=302" alt="CarToonz challenge image 1">
+          </div>
+          <div class="project-image">
+            <img src="https://picsum.photos/600/400?random=303" alt="CarToonz challenge image 2">
+          </div>
+        </div>
+        <p class="project-section__text">
+          Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt.
+        </p>
+      </section>
+
+      <!-- Solution Section -->
+      <section class="project-section">
+        <h2 class="project-section__title">The Solution</h2>
+        <p class="project-section__text">
+          At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident.
+        </p>
+        <div class="project-image project-image--full">
+          <img src="https://picsum.photos/1200/700?random=304" alt="CarToonz solution image">
+        </div>
+        <p class="project-section__text">
+          Similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga. Et harum quidem rerum facilis est et expedita distinctio.
+        </p>
+        <div class="project-image project-image--half">
+          <img src="https://picsum.photos/800/500?random=305" alt="CarToonz solution detail">
+        </div>
+      </section>
+
+      <!-- Impact Section -->
+      <section class="project-section">
+        <h2 class="project-section__title">Impact & Results</h2>
+        <p class="project-section__text">
+          Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere possimus, omnis voluptas assumenda est, omnis dolor repellendus.
+        </p>
+        <div class="project-images-grid">
+          <div class="project-image">
+            <img src="https://picsum.photos/600/400?random=306" alt="CarToonz impact image 1">
+          </div>
+          <div class="project-image">
+            <img src="https://picsum.photos/600/400?random=307" alt="CarToonz impact image 2">
+          </div>
+          <div class="project-image">
+            <img src="https://picsum.photos/600/400?random=308" alt="CarToonz impact image 3">
+          </div>
+          <div class="project-image">
+            <img src="https://picsum.photos/600/400?random=309" alt="CarToonz impact image 4">
+          </div>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <script>
+    // Video scroll effect
+    const videoHero = document.getElementById('videoHero');
+    let ticking = false;
+
+    function updateVideoHero() {
+      const scrolled = window.scrollY;
+      const windowHeight = window.innerHeight;
+      
+      // Start fading out when user scrolls past 80% of video
+      if (scrolled > windowHeight * 0.8) {
+        const fadeProgress = (scrolled - windowHeight * 0.8) / (windowHeight * 0.2);
+        videoHero.style.opacity = Math.max(0, 1 - fadeProgress);
+      } else {
+        videoHero.style.opacity = 1;
+      }
+
+      // Add scrolled-out class for transition
+      if (scrolled > windowHeight) {
+        videoHero.classList.add('scrolled-out');
+      } else {
+        videoHero.classList.remove('scrolled-out');
+      }
+
+      ticking = false;
+    }
+
+    window.addEventListener('scroll', () => {
+      if (!ticking) {
+        window.requestAnimationFrame(updateVideoHero);
+        ticking = true;
+      }
+    });
+
+    // Initialize video hero
+    updateVideoHero();
+  </script>
+
+  <script src="script.js"></script>
+</body>
+</html>
+

@@ -71,7 +71,7 @@ a:focus-visible, button:focus-visible{ outline:3px solid #7c5cff; outline-offset
    HERO
    ========================= */
 .hero{ min-height:100svh; position:relative; display:flex; flex-direction:column; align-content:center; align-items:flex-end; text-align:right; padding:8.75rem 5vw 18vh; background:#E9E9E9 }
-.hero__title{ font-family:'Rubik', sans-serif; font-size:7.5rem; line-height:7.625rem; letter-spacing:.02931rem; color:#000; text-align:right; margin:0 }
+.hero__title{ font-family:'Rubik', sans-serif; font-size:clamp(36px,8vw,92px); font-weight:900; line-height:1.1; letter-spacing:.02931rem; color:#000; text-align:right; margin:0 0 10px }
 .playful{ border:0; background:transparent; padding:0; cursor:pointer }
 .playful__wrap{ display:flex; width:28.0625rem; height:10.25rem; padding:0 1.125rem; flex-direction:row; align-items:flex-start; flex-shrink:0 }
 .playful__letter{ color:#000; text-align:center; font-family:'Bungee', sans-serif; font-size:9.375rem; font-weight:400; line-height:10.25rem; letter-spacing:.02931rem; display:inline-block; transition:transform .18s ease, text-shadow .18s ease; will-change:transform, text-shadow; --offset:.625rem; --shadow:#000 }
@@ -93,23 +93,23 @@ a:focus-visible, button:focus-visible{ outline:3px solid #7c5cff; outline-offset
 
 /* TABLET BREAKPOINT */
 @media (max-width:64rem){
-  .hero__title{ font-size:clamp(3rem, 8vw, 6rem); line-height:1.1 }
+  .hero__title{ font-size:clamp(36px,7.3vw,92px); line-height:1.1 }
   .playful__letter{ font-size:clamp(5rem, 12vw, 8rem); line-height:1em }
   .key{ font-size:clamp(2rem, 5vw, 3rem); padding:.4em .6em .38em .6em }
   .about{ min-height:auto }
-  .about__title{ font-size:clamp(3.5rem, 8vw, 6rem) }
-  .about__txt{ font-size:clamp(1.2rem, 3vw, 1.5rem) }
+  .about__title{ font-size:clamp(36px,7vw,92px) }
+  .about__txt{ font-size:clamp(1rem, 3vw, 1.25rem) }
   .about__cta{ font-size:clamp(0.9rem, 2vw, 1rem) }
   .card{ height:auto; min-height:600px }
   .card__name{ font-size:clamp(1.1rem, 2.5vw, 1.3rem) }
   .card__role{ font-size:clamp(0.85rem, 2vw, 1rem) }
-  .card__body{ font-size:clamp(1rem, 2.5vw, 1.15rem); min-height:400px }
+  .card__body{ font-size:clamp(1rem, 2.5vw, 1.25rem); min-height:400px }
   .proj{ width:100%; max-width:31.25rem }
-  .proj__title{ font-size:clamp(1.3rem, 3vw, 1.6rem) }
+  .proj__title{ font-size:clamp(36px,7vw,92px) }
   .chip{ font-size:clamp(0.65rem, 1.5vw, 0.75rem); padding:0.4rem 1.2rem }
   .works .filter{ flex-direction:column; width:auto; max-width:100% }
   .works .seg{ font-size:clamp(0.85rem, 2vw, 0.95rem) }
-  .foot__sub{ font-size:clamp(0.9rem, 2vw, 1rem) }
+  .foot__sub{ font-size:clamp(1rem, 2vw, 1.25rem) }
   .foot__copy{ font-size:clamp(1rem, 2.5vw, 1.2rem) }
   .foot__links a{ font-size:clamp(1rem, 2.5vw, 1.2rem) }
   .btn__inner{ font-size:clamp(0.9rem, 2vw, 1rem); padding:10px 16px }
@@ -122,25 +122,25 @@ a:focus-visible, button:focus-visible{ outline:3px solid #7c5cff; outline-offset
 /* PHONE BREAKPOINT */
 @media (max-width:48rem){
   .hero{ align-items:center; text-align:center; padding:2rem 1.25rem 8rem }
-  .hero__title{ text-align:center; font-size:clamp(2.2rem, 10vw, 4.25rem); line-height:1.12 }
+  .hero__title{ text-align:center; font-size:clamp(36px,7vw,92px); line-height:1.1 }
   .playful__wrap{ width:auto; height:auto; padding:0 .5rem; justify-content:center }
   .playful__letter{ font-size:clamp(3.5rem, 18vw, 7rem); line-height:1em }
   .tactile{ flex-wrap:wrap; justify-content:center; gap:.25rem }
   .key{ font-size:clamp(1.5rem, 8.5vw, 2.75rem); padding:.35em .5em .32em .5em; border-radius:.9rem; box-shadow:0 .35rem 0 #0E0E0E; transform:translateY(-.2rem) }
   .tactile .key + .key{ margin-left:-.14rem }
-  .about__title{ font-size:clamp(2.5rem, 12vw, 4rem) }
-  .about__txt{ font-size:clamp(1rem, 4vw, 1.3rem) }
+  .about__title{ font-size:clamp(36px,7vw,92px) }
+  .about__txt{ font-size:clamp(1rem, 4vw, 1.25rem) }
   .about__cta{ font-size:clamp(0.8rem, 3vw, 0.95rem) }
   .card{ height:auto; min-height:500px }
   .card__name{ font-size:clamp(1rem, 4vw, 1.25rem) }
   .card__role{ font-size:clamp(0.8rem, 3vw, 0.95rem) }
-  .card__body{ font-size:clamp(0.9rem, 3.5vw, 1.1rem); min-height:350px }
+  .card__body{ font-size:clamp(1rem, 3.5vw, 1.25rem); min-height:350px }
   .proj{ width:100%; max-width:100% }
-  .proj__title{ font-size:clamp(1.1rem, 5vw, 1.4rem) }
+  .proj__title{ font-size:clamp(36px,7vw,92px) }
   .chip{ font-size:clamp(0.6rem, 2.5vw, 0.7rem); padding:0.35rem 1rem }
   .works .filter{ flex-direction:column; width:auto; max-width:100% }
   .works .seg{ font-size:clamp(0.75rem, 3vw, 0.9rem); padding:10px 14px; width:100% }
-  .foot__sub{ font-size:clamp(0.85rem, 3.5vw, 1rem) }
+  .foot__sub{ font-size:clamp(1rem, 3.5vw, 1.25rem) }
   .foot__copy{ font-size:clamp(0.9rem, 4vw, 1.1rem) }
   .foot__links a{ font-size:clamp(0.9rem, 4vw, 1.1rem) }
   .btn__inner{ font-size:clamp(0.8rem, 3vw, 0.95rem); padding:8px 14px }
@@ -152,10 +152,10 @@ a:focus-visible, button:focus-visible{ outline:3px solid #7c5cff; outline-offset
 @media (max-width:23.4375rem){ 
   .hero{ padding:1.5rem 1rem 6rem } 
   .key{ font-size:clamp(1.35rem, 9.5vw, 2.25rem) }
-  .about__title{ font-size:clamp(2rem, 14vw, 3.5rem) }
-  .about__txt{ font-size:clamp(0.9rem, 5vw, 1.2rem) }
-  .card__body{ font-size:clamp(0.85rem, 4vw, 1rem) }
-  .proj__title{ font-size:clamp(1rem, 6vw, 1.3rem) }
+  .about__title{ font-size:clamp(36px,7vw,92px) }
+  .about__txt{ font-size:clamp(1rem, 5vw, 1.25rem) }
+  .card__body{ font-size:clamp(1rem, 4vw, 1.25rem) }
+  .proj__title{ font-size:clamp(36px,7vw,92px) }
 }
 
 /* Dock trigger */
@@ -165,9 +165,9 @@ body.shrunk .hdr{ transform:scale(1) }
 /* =========================
    ABOUT
    ========================= */
-.about{ position:relative; min-height:900px; display:grid; grid-template-columns:minmax(0,70%) minmax(260px,30%); gap:5vw; align-items:center; padding:10vh 5vw calc(16vh + 60px); background:#CDCDCD }
-.about__title{ color:#0E0E0E; font-family:'Rubik', sans-serif; font-size:7.5rem; font-weight:500; letter-spacing:.02931rem; margin:0 0 2rem }
-.about__txt{ color:#0E0E0E; font-family:'Rubik', sans-serif; font-size:1.75rem; font-weight:400; line-height:150%; letter-spacing:.03519rem; max-width:56ch; margin-bottom:2.5rem }
+.about{ position:relative; min-height:900px; display:grid; grid-template-columns:minmax(0,70%) minmax(260px,30%); gap:5vw; align-items:center; padding:10vh 5vw 10vh; background:#CDCDCD }
+.about__title{ color:#0E0E0E; font-family:'Rubik', sans-serif; font-size:clamp(36px,7vw,92px); font-weight:900; letter-spacing:.02931rem; margin:0 0 10px }
+.about__txt{ color:#000; font-family:'Rubik', sans-serif; font-size:1.25rem; font-style:normal; font-weight:400; line-height:1.6; letter-spacing:0.05863rem; max-width:56ch; margin:0 0 2.5rem }
 .about__email a{ color:var(--ink); text-decoration:none; border-bottom:2px solid var(--ink); font-weight:800 }
 .about__cta{ color:#0E0E0E; text-align:center; font-family:'Rubik', sans-serif; font-size:1.08125rem; font-weight:500; line-height:1.245rem; letter-spacing:.08788rem; text-transform:uppercase }
 
@@ -177,7 +177,7 @@ body.shrunk .hdr{ transform:scale(1) }
 .card__avatar img{ display:block; width:100%; height:100%; object-fit:cover; border-radius:50%; background:#fff; border:4px solid #111 }
 .card__name{ color:#000; font-family:Rubik; font-size:1.40625rem; font-weight:500; line-height:1.6175rem }
 .card__role{ color:#000; font-family:Rubik; font-size:1.0125rem; font-weight:400; line-height:1.3125rem; letter-spacing:.02813rem }
-.card__body{ margin:12px 0; border:1.5px solid var(--ink); border-radius:8px; background:#111; color:#fff; min-height:465px; padding:14px; font-family:'Rubik', sans-serif; font-size:1.2rem; font-weight:400; line-height:150%; letter-spacing:.03519rem; max-width:56ch; margin-bottom:2.5rem }
+.card__body{ margin:12px 0; border:1.5px solid var(--ink); border-radius:8px; background:#111; color:#fff; min-height:465px; padding:14px; font-family:'Rubik', sans-serif; font-size:1.25rem; font-style:normal; font-weight:400; line-height:1.6; letter-spacing:0.05863rem; max-width:56ch; margin-bottom:2.5rem }
 .typed::after{ content:""; display:inline-block; width:10px; height:1.2em; margin-left:4px; background:#fff; animation:blink 1s steps(1,end) infinite }
 @keyframes blink{ 50%{ opacity:0 } }
 .card__actions{ display:grid; grid-template-columns:repeat(4, 1fr); gap:8px; margin-top:12px }
@@ -244,12 +244,12 @@ body.shrunk .hdr{ transform:scale(1) }
 .proj__title {
   color: #FFF;
   font-family: 'Rubik', sans-serif;
-  font-size: 1.875rem;
+  font-size: clamp(36px,7vw,92px);
   font-style: normal;
-  font-weight: 600;
-  line-height: 120%; /* 2.25rem */
+  font-weight: 900;
+  line-height: 1.1;
   letter-spacing: 0.05863rem;
-  margin: 0;
+  margin: 0 0 10px;
   text-align: left;
   text-decoration: none;
 }
@@ -313,7 +313,7 @@ text-transform: uppercase;
 .foot{ position:relative; display:grid; grid-template-columns:1fr 1fr; gap:6vw; align-items:start; padding:12vh 5vw calc(12vh + 60px); background:#fff }
 @media (max-width:900px){ .foot{ grid-template-columns:1fr } }
 .foot__title{ font-size:clamp(36px,7vw,92px); margin:0 0 10px; font-weight:900 }
-.foot__sub{ color:#3b3b3b; font-weight:700; margin:.5rem 0 1.25rem }
+.foot__sub{ color:#000; font-family:'Rubik', sans-serif; font-size:1.25rem; font-style:normal; font-weight:400; line-height:1.6; letter-spacing:0.05863rem; margin:0 0 1.25rem }
 .btn{ background:#e5e5e5; border:0; border-radius:11px; box-shadow:inset 0 0 0 2px var(--ink); padding:0; text-decoration:none; color:inherit; display:inline-block }
 .btn__inner{ display:block; border:2px solid var(--ink); border-radius:10px; background:#fff; transform:translateY(-4px); padding:12px 18px; font-weight:900; letter-spacing:.06em }
 .btn:active .btn__inner{ transform:translateY(0) }
@@ -340,6 +340,7 @@ text-align: right;
 .foot { position: relative; }
 
 .foot__right{ display:grid; grid-template-rows:auto auto 1fr; justify-items:end; gap:20px }
+.foot__stay{ font-size:clamp(36px,7vw,92px); font-weight:900; margin:0 0 10px; font-family:'Rubik', sans-serif }
 .foot__links{ text-align:right; display:grid; gap:10px }
 .foot__links a {
 color: #000;

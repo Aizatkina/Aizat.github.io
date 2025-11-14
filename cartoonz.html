@@ -11,132 +11,9 @@
   <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Bungee&family=Rubik:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
 
-  <!-- Stylesheet -->
+  <!-- Stylesheets -->
   <link rel="stylesheet" href="Styles.css">
-  <style>
-    /* Video Hero Section */
-    .video-hero {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100vh;
-      z-index: 10;
-      background: #000;
-      overflow: hidden;
-    }
-
-    .video-hero video {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-    }
-
-    .video-hero.scrolled-out {
-      opacity: 0;
-      pointer-events: none;
-      transition: opacity 0.5s ease-out;
-    }
-
-    /* Content Section */
-    .project-content {
-      position: relative;
-      margin-top: 100vh;
-      background: var(--bg);
-      min-height: 100vh;
-    }
-
-    .project-content__header {
-      position: relative;
-      padding: 10vh 6vw calc(8vh + 60px);
-      background: #fff;
-    }
-
-    .project-content__title {
-      font-family: 'Rubik', sans-serif;
-      font-size: clamp(2.5rem, 8vw, 7.5rem);
-      font-weight: 900;
-      color: #0E0E0E;
-      margin: 0 0 2rem;
-      line-height: 1.1;
-    }
-
-    .project-content__body {
-      padding: 8vh 6vw 16vh;
-      background: var(--bg);
-      max-width: 1200px;
-      margin: 0 auto;
-    }
-
-    .project-section {
-      margin-bottom: 6rem;
-    }
-
-    .project-section__title {
-      font-family: 'Rubik', sans-serif;
-      font-size: clamp(1.5rem, 4vw, 3rem);
-      font-weight: 700;
-      color: #0E0E0E;
-      margin: 0 0 1.5rem;
-    }
-
-    .project-section__text {
-      font-family: 'Rubik', sans-serif;
-      font-size: 1.25rem;
-      font-weight: 400;
-      line-height: 1.6;
-      color: #0E0E0E;
-      margin: 0 0 1.5rem;
-    }
-
-    .project-image {
-      width: 100%;
-      margin: 2rem 0;
-      border-radius: 1rem;
-      overflow: hidden;
-      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
-    }
-
-    .project-image img {
-      width: 100%;
-      height: auto;
-      display: block;
-    }
-
-    .project-image--full {
-      width: 100%;
-    }
-
-    .project-image--half {
-      width: 100%;
-      max-width: 600px;
-      margin-left: auto;
-      margin-right: auto;
-    }
-
-    .project-images-grid {
-      display: grid;
-      grid-template-columns: 1fr;
-      gap: 2rem;
-      margin: 2rem 0;
-    }
-
-    @media (min-width: 768px) {
-      .project-images-grid {
-        grid-template-columns: repeat(2, 1fr);
-      }
-    }
-
-    @media (max-width: 768px) {
-      .project-content__header {
-        padding: 6vh 4vw 6vh;
-      }
-
-      .project-content__body {
-        padding: 6vh 4vw 12vh;
-      }
-    }
-  </style>
+  <link rel="stylesheet" href="cartoonz.css">
 </head>
 <body>
   <!-- Skip link -->
@@ -179,95 +56,211 @@
 
   <!-- Project Content -->
   <main id="main" class="project-content">
-    <!-- Header with Scallop -->
-    <div class="project-content__header">
-      <h1 class="project-content__title">CarToonz</h1>
-      <p class="project-section__text">In-car experience • University case</p>
-      <div class="scallop scallop--project" aria-hidden="true"></div>
-    </div>
+    <!-- Introduction Section -->
+    <section class="introduction">
+      <div class="introduction__container">
+        <!-- Left side: Logo, Title, Chips, and Description -->
+        <div class="introduction__left">
+          <div class="introduction__title-wrapper">
+            <img src="Cartoonz_logo.svg" alt="CarToonz logo" class="introduction__logo">
+            <h1 class="introduction__title">CarToonz</h1>
+          </div>
+          <div class="introduction__chips">
+            <span class="introduction__chip">Mobility Experience</span>
+            <span class="introduction__chip">Entertainment & Education</span>
+          </div>
+          <p class="introduction__description">
+            CarToonz is an interactive in-car experience designed to transform car windows into playful digital canvases where kids can draw, create stories, and explore their imagination. Developed as part of a university curriculum in collaboration with Mercedes, the project reimagines family travel as a space for creativity and connection. By turning passive rides into shared adventures, CarToonz helps children and parents bond through engaging, interactive fun.
+          </p>
+        </div>
+        
+        <!-- Right side: Creator names -->
+        <div class="introduction__creators">
+          Aizat Myrzakhmetova<br>
+          Liliána Bitó<br>
+          Luca Sára Kiss
+        </div>
+      </div>
+    </section>
 
-    <!-- Content Body -->
-    <div class="project-content__body">
-      <!-- Overview Section -->
-      <section class="project-section">
-        <h2 class="project-section__title">Overview</h2>
-        <p class="project-section__text">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris.
-        </p>
-        <div class="project-image project-image--full">
-          <img src="https://picsum.photos/1200/600?random=301" alt="CarToonz project overview image">
+    <!-- Problem Space Section -->
+    <section class="problem-space">
+      <div class="scallop scallop--problem-space" aria-hidden="true"></div>
+      <div class="problem-space__container">
+        <div class="problem-space__header">
+          <button class="key problem-space__key" aria-label="1">1</button>
+          <h2 class="problem-space__title">Problem space</h2>
         </div>
-        <p class="project-section__text">
-          Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-        </p>
-      </section>
+        <div class="problem-space__content">
+          <p class="problem-space__text">
+            As part of a university collaboration with Mercedes, we were tasked to create a speculative 10–20-year in-car experience exploring hyperconnectivity, where the interior becomes the heart of interaction.<br><br>
+            As a team of three, we brought our personal passions into the project and shared a desire to create something meaningful for children. We imagined a self-driving Mercedes interior that gives families the freedom to learn, create, and enjoy time together, guiding our brainstorming around playful learning, creativity, and cooperation. This led us to our favorite concept, "Tell the tale together," where families co-create stories with the help of an AI companion and immersive in-car visuals.
+          </p>
+          <div class="problem-space__image">
+            <img src="CarToonz_BrainstormIdeaMap.png" alt="CarToonz brainstorming idea map">
+          </div>
+        </div>
+      </div>
+    </section>
 
-      <!-- Challenge Section -->
-      <section class="project-section">
-        <h2 class="project-section__title">The Challenge</h2>
-        <p class="project-section__text">
-          Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.
-        </p>
-        <div class="project-images-grid">
-          <div class="project-image">
-            <img src="https://picsum.photos/600/400?random=302" alt="CarToonz challenge image 1">
-          </div>
-          <div class="project-image">
-            <img src="https://picsum.photos/600/400?random=303" alt="CarToonz challenge image 2">
+    <!-- Research Section -->
+    <section class="research">
+      <div class="scallop scallop--research" aria-hidden="true"></div>
+      <div class="research__container">
+        <div class="research__header">
+          <button class="key research__key" aria-label="2">2</button>
+          <h2 class="research__title">Research</h2>
+        </div>
+        <div class="research__content">
+          <p class="research__text">
+            To understand how children and families experience car travel today, we conducted interviews with six participants—three parents of current school-aged children (ages 3–14) and three grandparents who care for grandchildren on weekends.<br><br>
+            As findings of research we discovered that:
+          </p>
+          <div class="research__columns">
+            <div class="research__column">
+              <div class="research__icon">
+                <img src="" alt="Typical car scenarios icon" class="research__icon-img">
+              </div>
+              <h3 class="research__column-title">Typical car scenarios</h3>
+              <ul class="research__bullets">
+                <li>Daily school and kindergarten drop-offs</li>
+                <li>Long trips to grandparents or for errands</li>
+                <li>Kids start off energetic but calm down later</li>
+                <li>Managing different age groups' needs</li>
+              </ul>
+            </div>
+            <div class="research__column">
+              <div class="research__icon">
+                <img src="" alt="In-car activities icon" class="research__icon-img">
+              </div>
+              <h3 class="research__column-title">In-car activities</h3>
+              <ul class="research__bullets">
+                <li>Drawing, talking, and playing with toys</li>
+                <li>Listening to music or audiobooks</li>
+                <li>Playing guessing games or word games</li>
+                <li>Looking out the window and spotting objects</li>
+                <li>Using tablets sparingly for educational content</li>
+              </ul>
+            </div>
+            <div class="research__column">
+              <div class="research__icon">
+                <img src="" alt="Common pain points icon" class="research__icon-img">
+              </div>
+              <h3 class="research__column-title">Common pain points</h3>
+              <ul class="research__bullets">
+                <li>Kids misbehaving and causing distractions</li>
+                <li>Difficulty in keeping kids entertained</li>
+                <li>Noise levels and sibling conflicts</li>
+                <li>Safety concerns during long trips</li>
+              </ul>
+            </div>
+            <div class="research__column">
+              <div class="research__icon">
+                <img src="" alt="Age-specific needs icon" class="research__icon-img">
+              </div>
+              <h3 class="research__column-title">Age-specific needs</h3>
+              <ul class="research__bullets">
+                <li>Younger kids need frequent activity changes</li>
+                <li>Older kids may require more engaging activities</li>
+                <li>Different language and communication needs</li>
+                <li>Managing sleep schedules to avoid crankiness</li>
+              </ul>
+            </div>
           </div>
         </div>
-        <p class="project-section__text">
-          Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt.
-        </p>
-      </section>
+      </div>
+    </section>
 
-      <!-- Solution Section -->
-      <section class="project-section">
-        <h2 class="project-section__title">The Solution</h2>
-        <p class="project-section__text">
-          At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident.
-        </p>
-        <div class="project-image project-image--full">
-          <img src="https://picsum.photos/1200/700?random=304" alt="CarToonz solution image">
+    <!-- Concept Section -->
+    <section class="concept">
+      <div class="scallop scallop--concept" aria-hidden="true"></div>
+      <div class="concept__container">
+        <div class="concept__header">
+          <button class="key concept__key" aria-label="3">3</button>
+          <h2 class="concept__title">Developed concept</h2>
         </div>
-        <p class="project-section__text">
-          Similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga. Et harum quidem rerum facilis est et expedita distinctio.
-        </p>
-        <div class="project-image project-image--half">
-          <img src="https://picsum.photos/800/500?random=305" alt="CarToonz solution detail">
-        </div>
-      </section>
+        <div class="concept__content">
+          <!-- Persona Sub-chapter -->
+          <div class="concept__subchapter">
+            <h3 class="concept__subchapter-title">Persona</h3>
+            <p class="concept__subchapter-text">
+              To ground our design decisions, we created personas based on real interviews with parents and children, capturing both the playful needs of young passengers and the responsibilities of the adults who travel with them.This helped us see the car as a shared ecosystem where every feature must support both children's creativity and parents' calmness.
+            </p>
+            <div class="persona-image">
+              <img src="" alt="Persona image" class="persona-image__img">
+            </div>
+          </div>
 
-      <!-- Impact Section -->
-      <section class="project-section">
-        <h2 class="project-section__title">Impact & Results</h2>
-        <p class="project-section__text">
-          Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere possimus, omnis voluptas assumenda est, omnis dolor repellendus.
-        </p>
-        <div class="project-images-grid">
-          <div class="project-image">
-            <img src="https://picsum.photos/600/400?random=306" alt="CarToonz impact image 1">
-          </div>
-          <div class="project-image">
-            <img src="https://picsum.photos/600/400?random=307" alt="CarToonz impact image 2">
-          </div>
-          <div class="project-image">
-            <img src="https://picsum.photos/600/400?random=308" alt="CarToonz impact image 3">
-          </div>
-          <div class="project-image">
-            <img src="https://picsum.photos/600/400?random=309" alt="CarToonz impact image 4">
+          <!-- Design Opportunities Sub-chapter -->
+          <div class="concept__subchapter">
+            <h3 class="concept__subchapter-title">Design opportunities</h3>
+            <p class="concept__subchapter-text">
+              Inspired by the question "How might we provide engaging AND safe activities that don't rely on screens?", we began exploring functions that could meaningfully support both of our personas.
+            </p>
+            <div class="persona-image">
+              <img src="" alt="Design opportunities image" class="persona-image__img">
+            </div>
           </div>
         </div>
-      </section>
-    </div>
+      </div>
+    </section>
+
+    <!-- User Flow and Wireframes Section -->
+    <section class="user-flow">
+      <div class="scallop scallop--user-flow" aria-hidden="true"></div>
+      <div class="user-flow__container">
+        <div class="user-flow__header">
+          <button class="key user-flow__key" aria-label="4">4</button>
+          <h2 class="user-flow__title">User flow and wireframes</h2>
+        </div>
+        <div class="user-flow__content">
+          <div class="user-flow__subchapter">
+            <p class="user-flow__text">
+              To translate our concept into a tangible experience, we mapped out the full user flow for both the child and parent interfaces.
+            </p>
+            <div class="persona-image">
+              <img src="" alt="User flow and wireframes image" class="persona-image__img">
+            </div>
+          </div>
+
+          <!-- Usability Testing Sub-chapter -->
+          <div class="concept__subchapter">
+            <h3 class="concept__subchapter-title">Usability testing</h3>
+            <p class="concept__subchapter-text">
+              To validate our interaction decisions, we tested the placement and accessibility of key functions with children aged 5–7 in a real-life setup. This helped us confirm whether the interface was intuitive and reachable.
+            </p>
+            <div class="persona-image">
+              <img src="" alt="Usability testing image" class="persona-image__img">
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Final Deliverable Section -->
+    <section class="final-deliverable">
+      <div class="scallop scallop--final-deliverable" aria-hidden="true"></div>
+      <div class="final-deliverable__container">
+        <div class="final-deliverable__header">
+          <h2 class="final-deliverable__title">Final Deliverable</h2>
+        </div>
+        <div class="final-deliverable__content">
+          <p class="final-deliverable__text">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris.
+          </p>
+        </div>
+      </div>
+    </section>
   </main>
 
+  <script src="script.js"></script>
   <script>
-    // Video scroll effect
+    // Video scroll effect (after script.js loads)
     const videoHero = document.getElementById('videoHero');
-    let ticking = false;
+    let videoTicking = false;
 
     function updateVideoHero() {
+      if (!videoHero) return;
       const scrolled = window.scrollY;
       const windowHeight = window.innerHeight;
       
@@ -286,21 +279,53 @@
         videoHero.classList.remove('scrolled-out');
       }
 
-      ticking = false;
+      videoTicking = false;
     }
 
     window.addEventListener('scroll', () => {
-      if (!ticking) {
-        window.requestAnimationFrame(updateVideoHero);
-        ticking = true;
+      if (!videoTicking) {
+        window.requestAnimationFrame(() => {
+          updateVideoHero();
+          videoTicking = false;
+        });
+        videoTicking = true;
       }
-    });
+    }, { passive: true });
 
     // Initialize video hero
     updateVideoHero();
-  </script>
 
-  <script src="script.js"></script>
+    // Problem Space key button: press anim + color rotate
+    const PALETTE = ['#FFDC23', '#661FFF', '#F8376E', '#00FCAA', '#FFFFFF'];
+    function nextColor(current) {
+      const choices = PALETTE.filter(c => c.toLowerCase() !== (current || '').toLowerCase());
+      return choices[Math.floor(Math.random() * choices.length)];
+    }
+    
+    function setupKeyButton(keyElement) {
+      if (!keyElement) return;
+      keyElement.addEventListener('click', () => {
+        keyElement.classList.add('is-pressed');
+        setTimeout(() => keyElement.classList.remove('is-pressed'), 110);
+
+        const computed = getComputedStyle(keyElement).backgroundColor;
+        let currentHex = '';
+        if (computed.startsWith('rgb')) {
+          const [r, g, b] = computed.match(/\d+/g).map(Number);
+          currentHex = '#' + [r, g, b].map(v => v.toString(16).padStart(2, '0')).join('').toUpperCase();
+        } else {
+          currentHex = computed;
+        }
+        keyElement.style.backgroundColor = nextColor(currentHex);
+      });
+    }
+    
+    // Setup all key buttons
+    setupKeyButton(document.querySelector('.problem-space__key'));
+    setupKeyButton(document.querySelector('.research__key'));
+    setupKeyButton(document.querySelector('.concept__key'));
+    setupKeyButton(document.querySelector('.user-flow__key'));
+  </script>
 </body>
 </html>
 

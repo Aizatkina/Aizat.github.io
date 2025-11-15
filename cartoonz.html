@@ -47,11 +47,15 @@
 
   <!-- Video Hero Section -->
   <div class="video-hero" id="videoHero">
-    <video autoplay muted loop playsinline>
+    <video id="heroVideo" autoplay muted loop playsinline>
       <source src="https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4" type="video/mp4">
       <!-- Fallback for browsers that don't support video -->
       Your browser does not support the video tag.
     </video>
+    <button class="video-control" id="videoPlayPause" aria-label="Play/Pause video">
+      <span class="video-control__icon video-control__icon--play" aria-hidden="true">▶</span>
+      <span class="video-control__icon video-control__icon--pause" aria-hidden="true">⏸</span>
+    </button>
   </div>
 
   <!-- Project Content -->
@@ -258,6 +262,38 @@
   <script>
     // Video scroll-out effect
     const videoHero = document.getElementById('videoHero');
+    
+    // Video play/pause control
+    const heroVideo = document.getElementById('heroVideo');
+    const videoPlayPause = document.getElementById('videoPlayPause');
+    
+    if (heroVideo && videoPlayPause && videoHero) {
+      // Update button state based on video playing state
+      function updatePlayPauseButton() {
+        if (heroVideo.paused) {
+          videoHero.classList.remove('is-playing');
+        } else {
+          videoHero.classList.add('is-playing');
+        }
+      }
+      
+      // Toggle play/pause
+      videoPlayPause.addEventListener('click', () => {
+        if (heroVideo.paused) {
+          heroVideo.play();
+        } else {
+          heroVideo.pause();
+        }
+        updatePlayPauseButton();
+      });
+      
+      // Update button when video state changes
+      heroVideo.addEventListener('play', updatePlayPauseButton);
+      heroVideo.addEventListener('pause', updatePlayPauseButton);
+      
+      // Initial state
+      updatePlayPauseButton();
+    }
     let videoTicking = false;
 
     function updateVideoHero() {

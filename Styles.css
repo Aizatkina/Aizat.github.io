@@ -110,7 +110,7 @@ a:focus-visible, button:focus-visible{ outline:3px solid #7c5cff; outline-offset
   .works .filter{ flex-direction:column; width:auto; max-width:100% }
   .works .seg{ font-size:clamp(0.85rem, 2vw, 0.95rem) }
   .foot__sub{ font-size:clamp(1rem, 2vw, 1.25rem) }
-  .foot__copy{ font-size:clamp(1rem, 2.5vw, 1.2rem) }
+  .foot__copy{ font-size:clamp(0.7rem, 2.5vw, 0.8rem) }
   .foot__links a{ font-size:clamp(1rem, 2.5vw, 1.2rem) }
   .btn__inner{ font-size:clamp(0.9rem, 2vw, 1rem); padding:10px 16px }
   .keycap span{ padding:10px 14px }
@@ -143,7 +143,7 @@ a:focus-visible, button:focus-visible{ outline:3px solid #7c5cff; outline-offset
   .works .filter{ flex-direction:column; width:auto; max-width:100% }
   .works .seg{ font-size:clamp(0.75rem, 3vw, 0.9rem); padding:10px 14px; width:100% }
   .foot__sub{ font-size:clamp(1rem, 3.5vw, 1.25rem) }
-  .foot__copy{ font-size:clamp(0.9rem, 4vw, 1.1rem) }
+  .foot__copy{ font-size:clamp(0.7rem, 4vw, 0.8rem) }
   .foot__links a{ font-size:clamp(0.9rem, 4vw, 1.1rem) }
   .btn__inner{ font-size:clamp(0.8rem, 3vw, 0.95rem); padding:8px 14px }
   .keycap span{ padding:8px 12px }
@@ -345,7 +345,7 @@ text-transform: uppercase;
 /* =========================
    FOOTER
    ========================= */
-.foot{ position:relative; display:grid; grid-template-columns:1fr 1fr; gap:6vw; align-items:start; padding:12vh 5vw calc(12vh + 60px); background:#fff }
+.foot{ position:relative; display:grid; grid-template-columns:1fr 1fr; gap:6vw; align-items:end; padding:12vh 5vw calc(12vh + 60px); background:#fff }
 @media (max-width:900px){ .foot{ grid-template-columns:1fr } }
 .foot__title{ font-size:clamp(36px,7vw,92px); margin:0 0 10px; font-weight:900 }
 .foot__sub{ color:#000; font-family:'Rubik', sans-serif; font-size:1.25rem; font-style:normal; font-weight:400; line-height:1.6; letter-spacing:0.05863rem; margin:0 0 1.25rem }
@@ -358,10 +358,10 @@ right: 4rem; /* increased right margin */
 bottom: 2rem;
 color: #5F5F5F;
 font-family: Rubik;
-font-size: 1.32rem;
+font-size: 0.8rem;
 font-style: normal;
 font-weight: 400;
-line-height: 1.716rem; /* 130% */
+line-height: 1.04rem; /* 130% */
 letter-spacing: 0.1465rem;
 text-transform: uppercase;
 text-align: right;
@@ -374,9 +374,9 @@ text-align: right;
 
 .foot { position: relative; }
 
-.foot__right{ display:grid; grid-template-rows:auto auto 1fr; justify-items:end; gap:20px }
-.foot__stay{ font-size:clamp(36px,7vw,92px); font-weight:900; margin:0 0 10px; font-family:'Rubik', sans-serif }
-.foot__links{ text-align:right; display:grid; gap:10px }
+.foot__right{ display:grid; grid-template-rows:auto auto 1fr; justify-items:end; gap:20px; align-items:end }
+.foot__stay{ color:#0E0E0E; text-align:right; font-family:Rubik; font-size:1.64063rem; font-style:normal; font-weight:500; line-height:1.88675rem; /* 115% */ letter-spacing:0.01175rem; margin:0 0 10px }
+.foot__links{ text-align:right; display:grid; gap:10px; align-self:end }
 .foot__links a {
 color: #000;
 font-family: Rubik;

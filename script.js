@@ -89,7 +89,7 @@ $$('.tactile .key').forEach(key => {
 // ==============================
 const bioEl = $('#typedBio');
 if (bioEl) {
-  const bioText = `Hi! I'm Aizat — I craft playful, tactile interfaces and ship them with clean, resilient code. I care about accessibility and performance, and love turning scrappy prototypes into polished products.`;
+  const bioText = `I’m a highly skilled and versatile UX designer who blends technical expertise with clear, empathetic communication. I have a keen eye for detail and a genuine passion for creating user-centered designs that make a real impact. Every project I take on is an opportunity to solve problems thoughtfully and craft experiences people love. Let’s create something meaningful together: Aizatkina1104@gmail.com`;
   let typed = false;
 
   const io = new IntersectionObserver(([e]) => {

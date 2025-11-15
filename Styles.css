@@ -71,7 +71,7 @@ a:focus-visible, button:focus-visible{ outline:3px solid #7c5cff; outline-offset
    HERO
    ========================= */
 .hero{ min-height:100svh; position:relative; display:flex; flex-direction:column; align-content:center; align-items:flex-end; text-align:right; padding:8.75rem 5vw 18vh; background:#E9E9E9 }
-.hero__title{ font-family:'Rubik', sans-serif; font-size:clamp(36px,8vw,92px); font-weight:900; line-height:1.1; letter-spacing:.02931rem; color:#000; text-align:right; margin:0 0 10px }
+.hero__title{ font-family:'Rubik', sans-serif; font-size:clamp(52px,8vw,92px); font-weight:900; line-height:1.1; letter-spacing:.02931rem; color:#000; text-align:right; margin:0 0 10px }
 .playful{ border:0; background:transparent; padding:0; cursor:pointer }
 .playful__wrap{ display:flex; width:28.0625rem; height:10.25rem; padding:0 1.125rem; flex-direction:row; align-items:flex-start; flex-shrink:0 }
 .playful__letter{ color:#000; text-align:center; font-family:'Bungee', sans-serif; font-size:9.375rem; font-weight:400; line-height:10.25rem; letter-spacing:.02931rem; display:inline-block; transition:transform .18s ease, text-shadow .18s ease; will-change:transform, text-shadow; --offset:.625rem; --shadow:#000 }

@@ -58,6 +58,7 @@
   <main id="main" class="project-content">
     <!-- Introduction Section -->
     <section class="introduction">
+      <div class="scallop scallop--introduction" aria-hidden="true"></div>
       <div class="introduction__container">
         <!-- Left side: Logo, Title, Chips, and Description -->
         <div class="introduction__left">
@@ -255,7 +256,7 @@
 
   <script src="script.js"></script>
   <script>
-    // Video scroll effect (after script.js loads)
+    // Video scroll-out effect
     const videoHero = document.getElementById('videoHero');
     let videoTicking = false;
 
@@ -263,20 +264,24 @@
       if (!videoHero) return;
       const scrolled = window.scrollY;
       const windowHeight = window.innerHeight;
+      const videoHeight = windowHeight * 0.85; // 85vh
+      const scrollThreshold = videoHeight * 0.8; // Start scrolling out at 80% of video height
       
-      // Start fading out when user scrolls past 80% of video
-      if (scrolled > windowHeight * 0.8) {
-        const fadeProgress = (scrolled - windowHeight * 0.8) / (windowHeight * 0.2);
+      // Start scrolling video down when user scrolls past 80% of video
+      if (scrolled > scrollThreshold) {
+        // Calculate how far past the threshold we've scrolled
+        const scrollPast = scrolled - scrollThreshold;
+        // Move video down proportionally to scroll amount
+        const translateY = scrollPast;
+        videoHero.style.transform = `translateY(${translateY}px)`;
+        
+        // Fade out as it scrolls down
+        const fadeProgress = scrollPast / (videoHeight * 0.2);
         videoHero.style.opacity = Math.max(0, 1 - fadeProgress);
       } else {
+        // Before threshold, keep video fixed at top
+        videoHero.style.transform = 'translateY(0)';
         videoHero.style.opacity = 1;
-      }
-
-      // Add scrolled-out class for transition
-      if (scrolled > windowHeight) {
-        videoHero.classList.add('scrolled-out');
-      } else {
-        videoHero.classList.remove('scrolled-out');
       }
 
       videoTicking = false;
@@ -328,4 +333,3 @@
   </script>
 </body>
 </html>
-
